@@ -25,9 +25,8 @@ class Movie(db.Model):
             "apiId": self.apiId,
             "title": self.title,
             "overview": self.overview,
-            "posterPath": self.poster_path,
-            "backdropPath": self.backdrop_path,
-            "video": self.video
+            "posterPath": self.posterPath,
+            "backdropPath": self.backdropPath
         }
         if(add_watchlists):
             movie["watchlists"] = [watchlist.to_dict() for watchlist in self.movie_watchlists]

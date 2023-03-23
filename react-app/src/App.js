@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import WatchList from "./components/WatchList";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +30,9 @@ function App() {
           <Route path='/' exact>
             <LandingPage />
           </Route>
+          <ProtectedRoute path='/mywatchlists'>
+            <WatchList />
+          </ProtectedRoute>
         </Switch>
       )}
     </>

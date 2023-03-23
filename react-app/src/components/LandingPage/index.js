@@ -3,6 +3,8 @@ import './landingPage.css'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllMovies } from '../../store/movies'
+import {NavLink} from 'react-router-dom'
+import SingleMovie from '../SingleMovie'
 
 
 const LandingPage = () => {
@@ -18,14 +20,13 @@ const LandingPage = () => {
 
     return movies.length ? (
         <div className="movies-container">
-            <div className="movie-content">
                 {movies.map(movie => (
-                    <>
-                        <img src={movie.posterPath} alt="movie poster"/>
-                        {movie.title}
-                    </>
+                    <div className="single-movie">
+                        <NavLink to={`/movies/${movie.id}`} >
+                            <SingleMovie movie={movie}/>
+                        </NavLink>
+                    </div>
                 ))}
-            </div>
         </div>
     ): <div>Loading</div>
 }

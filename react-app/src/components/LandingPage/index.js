@@ -21,7 +21,7 @@ const LandingPage = () => {
     return movies.length ? (
         <div className="movies-container">
                 {movies.map(movie => (
-                    <div className="single-movie">
+                    <div key={movie.id} className="single-movie">
                         <NavLink to={`/movies/${movie.id}`} >
                             <SingleMovie movie={movie}/>
                         </NavLink>

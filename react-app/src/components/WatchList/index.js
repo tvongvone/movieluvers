@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getMyWatchlists } from "../../store/watchlists";
+import OpenModalButton from "../OpenModalButton";
+import CreateList from "../CreateList";
+import SingleWatchList from "../SingleWatchList";
 
 
 
@@ -10,10 +13,6 @@ const WatchList = () => {
 
     const watchlistArray = Object.values(watchlistData.myWatchLists)
 
-    const clickHandler = async () => {
-
-    }
-
     useEffect(() => {
         dispatch(getMyWatchlists())
     }, [dispatch])
@@ -21,13 +20,18 @@ const WatchList = () => {
     return watchlistArray.length ? (
         <div className='watchlist-container'>
             {watchlistArray.map(ele => (
-                <div>
-                    {ele.name}
+                <div key={ele.id}>
+                    <SingleWatchList watchlist={ele} />
                 </div>
+
             ))}
-            <button onClick={clickHandler}>Create new list</button>
+            <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
         </div>
-    ): <h1>You currently have no list</h1>
+    ): <div>
+         <h1>You currently have no list</h1>
+         <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
+    </div>
+
 }
 
 

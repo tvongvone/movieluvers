@@ -1,3 +1,3 @@
 from .login_form import LoginForm
 from .signup_form import SignUpForm
-from .watchlist import WatchListForm
+from .watchlist import WatchForm

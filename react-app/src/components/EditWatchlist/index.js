@@ -1,33 +1,31 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
+import { editForWatchlist } from "../../store/watchlists"
 import { useModal } from "../../context/Modal"
-import { createWatchList } from "../../store/watchlists"
 
 
 
-const CreateList = () => {
+const EditWatchlist = ({watchlist}) => {
     const dispatch = useDispatch()
-    const [name, setName] = useState('')
+    const [name, setName] = useState(watchlist.name)
+    const {closeModal} = useModal()
     const [hasSubmitted, setSubmitted] = useState(false)
     const [validationErrors, setErrors] = useState([])
-
-    const {closeModal} = useModal()
-
 
     const submitHandler = async (e) => {
         e.preventDefault()
 
         setSubmitted(true)
-        if(validationErrors.length) return "Your post has errors"
+        if(validationErrors.length) return 'This has errors'
 
+        const response = await dispatch(editForWatchlist({watchlistId: watchlist.id, name}))
 
-        const data = await dispatch(createWatchList({name}))
-        if(data) {
-            setErrors(data)
+        if(response) {
+            setErrors(response)
         } else {
-            setName("")
-            setErrors([])
             setSubmitted(false)
+            setErrors([])
+            setName('')
             closeModal()
         }
     }
@@ -38,12 +36,9 @@ const CreateList = () => {
         setErrors(errors)
     }, [name])
 
-
-
-
-    return (
-        <div className="form-container">
-            <h2>Enter a name for this list</h2>
+    return watchlist && (
+        <div>
+            <h2>Change name</h2>
             {hasSubmitted && validationErrors.length > 0 && (
                     <div className='errors-info'>
                         <ul>
@@ -54,10 +49,10 @@ const CreateList = () => {
                     </div>
                 )}
             <form onSubmit={submitHandler}>
-                <input id='name' name='name' type='text' value={name} onChange={e => setName(e.target.value)} />
+                <input id='name' type='text' value={name} onChange={e => setName(e.target.value)} />
             </form>
         </div>
     )
 }
 
-export default CreateList
+export default EditWatchlist

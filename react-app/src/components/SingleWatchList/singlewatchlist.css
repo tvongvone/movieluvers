@@ -2,3 +2,19 @@
     height: 300px;
     width: 230px;
 }
+
+.watchlist-title {
+    display: flex;
+    align-items: baseline;
+}
+
+.watchlist-title:hover {
+    cursor: pointer;
+}
+
+.icons {
+    margin-left: 40px;
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+}

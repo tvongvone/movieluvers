@@ -10,3 +10,10 @@
     background-color: lightgray;
     cursor: pointer;
 }
+
+.edit-pen {
+    text-decoration: none;
+    border: none;
+    background-color: inherit;
+    font-size: 16px;
+}

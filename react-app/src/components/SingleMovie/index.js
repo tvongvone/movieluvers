@@ -31,7 +31,7 @@ const SingleMovie = ({movie}) => {
                                 e.preventDefault()
                                 dispatch(addMovieToWatchList({movieId:movie.id, watchlistId:list.id}))
                             }} key={list.id} className="single-watchlist">
-                                {list.name}
+                                <p style={{textOverflow: 'ellipsis'}}>{list.name}</p>
                             </li>
                         ))}
                     </ul>

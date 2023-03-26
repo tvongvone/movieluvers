@@ -16,7 +16,7 @@ class Movie(db.Model):
 
 
 
-    # reviews = db.relationship("Review", back_populates="movie")
+    reviews = db.relationship("Review", back_populates="movie")
     movie_watchlists = db.relationship("WatchList", secondary=watchlists_movies, back_populates="watchlist_movies")
 
     def to_dict(self, add_watchlists=False, add_reviews=False):
@@ -31,7 +31,7 @@ class Movie(db.Model):
         if(add_watchlists):
             movie["watchlists"] = [watchlist.to_dict() for watchlist in self.movie_watchlists]
 
-        # if(add_reviews):
-        #     movie['reviews'] = [review.to_dict(add_user=True) for review in self.reviews]
+        if(add_reviews):
+            movie['reviews'] = [review.to_dict(add_user=True) for review in self.reviews]
 
         return movie

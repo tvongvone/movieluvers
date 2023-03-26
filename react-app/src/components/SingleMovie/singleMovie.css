@@ -3,6 +3,7 @@
     width: 230px;
     height: 300px;
     margin: 10px;
+    text-overflow: hidden;
 }
 
 .poster {
@@ -49,6 +50,7 @@
 
 .single-watchlist {
     padding: 5px;
+    text-overflow: hidden;
 }
 
 .single-watchlist:hover {

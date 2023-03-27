@@ -1,5 +1,6 @@
 const GET_ALL_MOVIES = 'movies/GET_ALL_MOVIES'
 const GET_SINGLE = 'movies/GET_SINGLE'
+const REMOVE_SINGLE = 'movies/REMOVE_SINGLE'
 
 const getMovies = data => {
     return {
@@ -15,10 +16,16 @@ const getSingle = data => {
     }
 }
 
+export const removeSingle = () => {
+    return {
+        type: REMOVE_SINGLE,
+    }
+}
+
 
 // Get all the movies
 export const getAllMovies = () => async dispatch => {
-    const response = await fetch('api/movies')
+    const response = await fetch('/api/movies')
 
 
 
@@ -30,7 +37,7 @@ export const getAllMovies = () => async dispatch => {
 
 // Get single movie
 export const getSingleMovie = (id) => async dispatch => {
-    const response = await fetch(`api/movies/${id}`)
+    const response = await fetch(`/api/movies/${id}`)
 
     if(response.ok) {
         const data = await response.json()
@@ -54,6 +61,12 @@ export default function moviesReducer(state = initialState, action) {
         case GET_SINGLE: {
             const newState = {...state, singleMovie: {}}
             newState.singleMovie = action.payload
+            return newState
+        }
+
+        case REMOVE_SINGLE: {
+            const newState = {...state}
+            newState.singleMovie = {}
             return newState
         }
 

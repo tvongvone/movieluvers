@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import WatchList from "./components/WatchList";
 import { getMyWatchlists } from "./store/watchlists";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           <ProtectedRoute path='/mywatchlists'>
             <WatchList />
           </ProtectedRoute>
+          <Route path='/movies/:id'>
+            <MovieDetails />
+          </Route>
         </Switch>
       )}
     </>

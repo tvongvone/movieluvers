@@ -1,5 +1,4 @@
 
-
 import { useDispatch } from 'react-redux'
 import { removeMovieFromWatchList } from '../../store/watchlists'
 

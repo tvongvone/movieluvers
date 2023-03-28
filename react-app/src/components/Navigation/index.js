@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 		<div className="nav-bar-container">
 			<ul className='nav-bar-content'>
 				<li>
-					<NavLink exact to="/">Home</NavLink>
+					<NavLink exact to="/"><i className="fa-solid fa-heart-pulse" style={{fontSize: '20px',color: 'red'}}></i>MovieLuvers</NavLink>
 				</li>
 				{isLoaded && (
 					<li>

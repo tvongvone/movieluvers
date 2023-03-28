@@ -13,16 +13,15 @@
     transition: .3s;
 }
 
-.poster:hover {
+/* .poster:hover {
     filter: brightness(50%);
     transition: .6s;
-}
+} */
 
 .add {
     position: absolute;
     bottom: 5px;
     right: 5px;
-    z-index: 1;
 }
 
 .plus {
@@ -50,7 +49,7 @@
 
 .single-watchlist {
     padding: 5px;
-    text-overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .single-watchlist:hover {

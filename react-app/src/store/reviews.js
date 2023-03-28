@@ -23,6 +23,7 @@ const deleteReview = (id) => {
     }
 }
 
+
 // Movie reviews
 export const getMovieReviews = (id) => async dispatch => {
     const response = await fetch(`/api/reviews/${id}`)
@@ -56,6 +57,30 @@ export const createMovieReview = (obj) => async dispatch => {
     }
 }
 
+// update movie review
+export const editMovieReview = (obj) => async dispatch => {
+    const response = await fetch(`/api/reviews/${obj.reviewId}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj)
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(createReview(data))
+        return null
+    } else if (response.status < 500) {
+        const data = await response.json()
+        return data.errors
+    } else {
+        return 'SERVER ERROR HAS OCCURED'
+    }
+}
+
+
+// Delete movie review
 export const deleteMovieReview = (id) => async dispatch => {
     const response = await fetch(`/api/reviews/${id}/delete`, {
         method: 'DELETE'

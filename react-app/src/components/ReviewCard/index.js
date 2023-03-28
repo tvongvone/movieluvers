@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
 import { deleteMovieReview } from '../../store/reviews'
 import { useDispatch } from 'react-redux'
+import EditReview from '../EditReview'
 
 
 const ReviewCard = ({review}) => {
@@ -21,7 +22,7 @@ const ReviewCard = ({review}) => {
                 {user?.id === review.userId && (
                     <div>
                         <div className='icons'>
-                        <OpenModalButton styleOption={'edit-pen'} buttonText={<i className="fa-solid fa-pencil"></i>}/>
+                        <OpenModalButton modalComponent={<EditReview review={review}/>} styleOption={'edit-pen'} buttonText={<i className="fa-solid fa-pencil"></i>}/>
                         <i onClick={deleteHandler} className="fa-solid fa-trash-can"></i>
                     </div>
                     </div>

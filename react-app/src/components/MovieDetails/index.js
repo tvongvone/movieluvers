@@ -60,6 +60,9 @@ const MovieDetails = () => {
                     {user && !userArray.includes(user?.id) && (
                         <CreateReview id={id}/>
                     )}
+                    {!user && (
+                        <h3>Log in to leave a review</h3>
+                    )}
                 </div>
             </div>
         </div>

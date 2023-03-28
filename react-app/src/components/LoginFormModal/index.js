@@ -12,6 +12,15 @@ function LoginFormModal() {
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
 
+  const demoUser = async (e) => {
+    e.preventDefault();
+    const password = "password";
+    const credential = "demo@aa.io";
+    const response = await dispatch(login(credential, password));
+    dispatch(getMyWatchlists())
+    closeModal()
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -23,37 +32,46 @@ function LoginFormModal() {
     }
   };
 
-  return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
-  );
+    return (
+      <div className="login-modal-wrapper">
+        <div className='login-title'>
+        <i className="fa-solid fa-heart-pulse" style={{color: 'red'}}></i>
+          <div>Log in</div>
+        </div>
+        <div className="login-form-container">
+          <form className='login-form' onSubmit={handleSubmit}>
+              {errors.map((error, idx) => (
+                <div key={idx}>{error}</div>
+              ))}
+            <label>
+              Email
+              </label>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Email'
+                required
+              />
+            <label>
+              Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                placeholder='Password'
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+        <div className='login-buttons-container'>
+            <button id='login-submit-button' type="submit">Log In</button>
+          <div>OR</div>
+          <button id='demo-user-submit-button' onClick={demoUser}>Demo User</button>
+        </div>
+          </form>
+        </div>
+      </div>
+    );
 }
 
 export default LoginFormModal;

@@ -1,5 +1,6 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS'
 const CREATE_REVIEW = 'reviews/CREATE_REVIEWS'
+const DELETE_REVIEW = 'reviews/DELETE'
 
 const getReviews = (data) => {
     return {
@@ -12,6 +13,13 @@ const createReview = (data) => {
     return {
         type: CREATE_REVIEW,
         payload: data
+    }
+}
+
+const deleteReview = (id) => {
+    return {
+        type: DELETE_REVIEW,
+        payload: id
     }
 }
 
@@ -28,7 +36,8 @@ export const getMovieReviews = (id) => async dispatch => {
 
 // Create a review
 export const createMovieReview = (obj) => async dispatch => {
-    const response = await fetch(`/api/reviews/${obj.movieId}`, {
+    console.log('I SENT A DISPATCH', obj)
+    const response = await fetch('/api/reviews/new', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -38,8 +47,7 @@ export const createMovieReview = (obj) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-
-        dispatch(createReview(data))
+        console.log('Hello', data)
         return null
     } else if (response.status < 500) {
         const data = await response.json()
@@ -47,6 +55,17 @@ export const createMovieReview = (obj) => async dispatch => {
         return data.errors
     } else {
         return 'Server error'
+    }
+}
+
+export const deleteMovieReview = (id) => async dispatch => {
+    const response = await fetch(`/api/reviews/${id}/delete`, {
+        method: 'DELETE'
+    })
+
+    if(response.ok) {
+        const data = await response.json();
+        dispatch(deleteReview(id))
     }
 }
 
@@ -68,6 +87,12 @@ export default function reviewsReducer(state=initialState, action) {
         case CREATE_REVIEW: {
             const newState = {...state, movieReviews: {...state.movieReviews}}
             newState.movieReviews[action.payload.id] = action.payload
+            return newState
+        }
+
+        case DELETE_REVIEW: {
+            const newState = {...state, movieReviews: {...state.movieReviews}}
+            delete newState.movieReviews[action.payload]
             return newState
         }
 

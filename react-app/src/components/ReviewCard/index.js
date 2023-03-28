@@ -1,10 +1,17 @@
 import './review.css'
 import { useSelector } from 'react-redux'
 import OpenModalButton from '../OpenModalButton'
+import { deleteMovieReview } from '../../store/reviews'
+import { useDispatch } from 'react-redux'
 
 
 const ReviewCard = ({review}) => {
     const user  = useSelector(state => state.session.user)
+    const dispatch = useDispatch();
+
+    const deleteHandler = async () => {
+        const response = await dispatch(deleteMovieReview(review.id))
+    }
 
     return review && (
         <div className='review-container'>
@@ -15,7 +22,7 @@ const ReviewCard = ({review}) => {
                     <div>
                         <div className='icons'>
                         <OpenModalButton styleOption={'edit-pen'} buttonText={<i className="fa-solid fa-pencil"></i>}/>
-                        <i className="fa-solid fa-trash-can"></i>
+                        <i onClick={deleteHandler} className="fa-solid fa-trash-can"></i>
                     </div>
                     </div>
                 )}

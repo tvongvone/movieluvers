@@ -3,7 +3,7 @@ import './moviedetails.css'
 import { useEffect } from 'react'
 import { getSingleMovie, removeSingle } from '../../store/movies'
 import {useParams} from 'react-router-dom'
-import { getMovieReviews } from '../../store/reviews'
+import { createMovieReview, getMovieReviews } from '../../store/reviews'
 import ReviewCard from '../ReviewCard'
 import { useState } from 'react'
 
@@ -22,14 +22,22 @@ const MovieDetails = () => {
 
     const userArray = reviews.map(ele => ele.user.id)
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
 
         setSubmitted(true)
 
         if(validationErrors.length) return "Your review has errors"
 
-        const data = await
+        const data = await createMovieReview({movieId: id, review: reviewText})
+
+        if(data) {
+            setErrors(data)
+        } else {
+            setSubmitted(false)
+            setErrors([])
+            setReview('')
+        }
 
     }
 
@@ -75,6 +83,7 @@ const MovieDetails = () => {
                             <form onSubmit={submitHandler} className='form-review'>
                                 <label className='hidden'>Please provide a brief review (0 to 255) characters</label>
                                 <textarea value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
+                                <button type='submit'>Submit</button>
                             </form>
                         </div>
                     )}

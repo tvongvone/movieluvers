@@ -17,8 +17,11 @@ const CreateList = () => {
     const submitHandler = async (e) => {
         e.preventDefault()
 
+
         setSubmitted(true)
         if(validationErrors.length) return "Your post has errors"
+
+
 
 
         const data = await dispatch(createWatchList({name}))

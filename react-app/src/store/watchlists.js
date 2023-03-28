@@ -54,6 +54,7 @@ export const getMyWatchlists = () => async dispatch => {
 }
 // Create a single watchlist
 export const createWatchList = (obj) => async dispatch => {
+    console.log('THIS HAPPENED')
     const response = await fetch('/api/watchlists/new', {
         method: 'POST',
         headers: {
@@ -62,18 +63,17 @@ export const createWatchList = (obj) => async dispatch => {
         body: JSON.stringify(obj)
     })
 
-    if(response.ok) {
+    if (response.ok) {
         const data = await response.json()
 
         dispatch(createList(data))
         return null
-
     } else if (response.status < 500) {
         const data = await response.json()
 
         return data.errors
     } else {
-        return 'Unknown error'
+        return 'Update watchlist has an unknown error'
     }
 }
 

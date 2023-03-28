@@ -137,6 +137,9 @@ export const editForWatchlist = (obj) => async dispatch => {
 
 }
 
+// Create a review
+
+
 
 // Delete a watchlist
 export const deleteSingleWatchlist = (watchlistId) => async dispatch => {
@@ -145,7 +148,6 @@ export const deleteSingleWatchlist = (watchlistId) => async dispatch => {
     })
 
     if (response.ok) {
-        const data = await response.json()
 
         dispatch(deleteWatchList(watchlistId))
     }

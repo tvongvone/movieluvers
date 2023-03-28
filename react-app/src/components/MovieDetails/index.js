@@ -3,9 +3,11 @@ import './moviedetails.css'
 import { useEffect } from 'react'
 import { getSingleMovie, removeSingle } from '../../store/movies'
 import {useParams} from 'react-router-dom'
-import { createMovieReview, getMovieReviews } from '../../store/reviews'
+import { getMovieReviews } from '../../store/reviews'
 import ReviewCard from '../ReviewCard'
 import { useState } from 'react'
+import CreateReview from '../CreateReview'
+import OpenModalButton from '../OpenModalButton'
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -14,32 +16,10 @@ const MovieDetails = () => {
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
 
-    const [reviewText, setReview] = useState('')
-    const [hasSubmitted, setSubmitted] = useState(false)
-    const [validationErrors, setErrors] = useState([])
-
     const reviews = Object.values(reviewData.movieReviews)
 
     const userArray = reviews.map(ele => ele.user.id)
 
-    const submitHandler = async (e) => {
-        e.preventDefault()
-
-        setSubmitted(true)
-
-        if(validationErrors.length) return "Your review has errors"
-
-        const data = await createMovieReview({movieId: id, review: reviewText})
-
-        if(data) {
-            setErrors(data)
-        } else {
-            setSubmitted(false)
-            setErrors([])
-            setReview('')
-        }
-
-    }
 
     useEffect(() => {
         dispatch(getSingleMovie(id))
@@ -78,14 +58,7 @@ const MovieDetails = () => {
                         </div>
                     ))}
                     {user && !userArray.includes(user?.id) && (
-                        <div className='add-review'>
-                            <h2 className='profile-name'>{user.username[0]}</h2>
-                            <form onSubmit={submitHandler} className='form-review'>
-                                <label className='hidden'>Please provide a brief review (0 to 255) characters</label>
-                                <textarea value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
-                                <button type='submit'>Submit</button>
-                            </form>
-                        </div>
+                        <CreateReview id={id}/>
                     )}
                 </div>
             </div>

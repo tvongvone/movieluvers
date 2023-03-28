@@ -28,7 +28,6 @@ def get_reviews(id):
 @login_required
 def post_review():
 
-
     res = request.get_json()
 
     form = ReviewForm()
@@ -36,7 +35,6 @@ def post_review():
 
     if form.validate_on_submit():
         reviewdata = Review(review=res['review'], movieId=res['movieId'], userId=current_user.id)
-        print('SUBMITTED ')
         db.session.add(reviewdata)
         db.session.commit()
         return reviewdata.to_dict(add_user=True)

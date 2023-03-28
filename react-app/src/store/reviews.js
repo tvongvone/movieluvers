@@ -36,7 +36,6 @@ export const getMovieReviews = (id) => async dispatch => {
 
 // Create a review
 export const createMovieReview = (obj) => async dispatch => {
-    console.log('I SENT A DISPATCH', obj)
     const response = await fetch('/api/reviews/new', {
         method: 'POST',
         headers: {
@@ -47,14 +46,13 @@ export const createMovieReview = (obj) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        console.log('Hello', data)
+        dispatch(createReview(data))
         return null
     } else if (response.status < 500) {
         const data = await response.json()
-
         return data.errors
     } else {
-        return 'Server error'
+        return 'SERVER ERROR HAS OCCURED'
     }
 }
 
@@ -64,7 +62,6 @@ export const deleteMovieReview = (id) => async dispatch => {
     })
 
     if(response.ok) {
-        const data = await response.json();
         dispatch(deleteReview(id))
     }
 }

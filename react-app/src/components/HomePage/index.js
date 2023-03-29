@@ -13,17 +13,18 @@ const HomePage = () => {
     const moviesData = useSelector(state => state.movies)
 
     const movies = Object.values(moviesData.allMovies)
+    const oldMovies = Object.values(moviesData.bestMovies)
 
     useEffect(() => {
         dispatch(getAllMovies())
     }, [dispatch])
 
-    return movies.length ? (
+    return movies.length && oldMovies.length ? (
         <>
         <header className="banner" style={{
             backgroundSize: "cover",
             backgroundImage: `url(${movies[1].backdropPath})`,
-            backgroundPosition: "center center"
+            backgroundPosition: "top center"
         }}>
 
             <div className='banner-contents'>
@@ -37,7 +38,9 @@ const HomePage = () => {
 
             <div className="fade-bottom"></div>
         </header>
-        <RowMovies movies={movies} />
+        <RowMovies title={'Upcoming movies'} movies={movies} />
+
+        <RowMovies title={'Top Rated movies'} movies={oldMovies} />
 
 </>
     ): <div>Loading</div>

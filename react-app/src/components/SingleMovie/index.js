@@ -50,7 +50,10 @@ const SingleMovie = ({movie}) => {
                     </ul>
                 ):<div>You must be logged in to add movies to your watchlist</div>}
             </div>
+
             <img className="poster" src={movie.posterPath} alt='Movie Poster'/>
+
+
 
         </div>
     )

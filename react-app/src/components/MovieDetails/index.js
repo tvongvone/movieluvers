@@ -5,9 +5,13 @@ import { getSingleMovie, removeSingle } from '../../store/movies'
 import {useParams} from 'react-router-dom'
 import { getMovieReviews } from '../../store/reviews'
 import ReviewCard from '../ReviewCard'
-import { useState } from 'react'
 import CreateReview from '../CreateReview'
-import OpenModalButton from '../OpenModalButton'
+import axios from 'axios'
+
+
+const API_KEY = process.env.API_KEY
+
+
 
 const MovieDetails = () => {
     const dispatch = useDispatch();
@@ -20,10 +24,21 @@ const MovieDetails = () => {
 
     const userArray = reviews.map(ele => ele.user.id)
 
+    const fetchVideo = async () => {
+
+        const data = await dispatch(getSingleMovie(id))
+
+        if(data) {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=ca5c34933457ac59352b1c1d718b3237&language=en-US`)
+            console.log(response.data.results[0])
+        }
+    }
+
 
     useEffect(() => {
-        dispatch(getSingleMovie(id))
+        fetchVideo()
         dispatch(getMovieReviews(id))
+
 
         return () => {
             dispatch(removeSingle())
@@ -36,7 +51,7 @@ const MovieDetails = () => {
                 <div className='backdrop' style={{backgroundImage: `url(${movieDetails.backdropPath})`, objectFit: 'cover'}}>
 
                     <div className='movie-info'>
-                        <img src={movieDetails.posterPath} alt='' />
+                        <img className='movie-info-img'src={movieDetails.posterPath} alt='' />
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
                             <div className='play-button'>

@@ -11,6 +11,7 @@ class Movie(db.Model):
     apiId = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String(40), nullable=False)
     overview = db.Column(db.String, nullable=False)
+    genre = db.Column(db.Integer, nullable=False)
     posterPath = db.Column(db.String)
     backdropPath = db.Column(db.String)
 
@@ -25,6 +26,7 @@ class Movie(db.Model):
             "apiId": self.apiId,
             "title": self.title,
             "overview": self.overview,
+            "genre": self.genre,
             "posterPath": self.posterPath,
             "backdropPath": self.backdropPath
         }

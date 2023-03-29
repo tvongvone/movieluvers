@@ -4,14 +4,27 @@
     height: 300px;
     margin: 10px;
     text-overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.single-movie:hover {
+    transform: scale(1.1)
 }
 
 .poster {
-    height: 100%;
     width: 100%;
-    object-fit: cover;
-    transition: .3s;
+    height: 100%;
+    object-fit: contain;
 }
+
+/* .image-container {
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.image-container:hover {
+    transform: scale(1.1)
+} */
 
 /* .poster:hover {
     filter: brightness(50%);
@@ -21,7 +34,7 @@
 .add {
     position: absolute;
     bottom: 5px;
-    right: 5px;
+    right: 10px;
 }
 
 .plus {

@@ -43,11 +43,14 @@ export const getSingleMovie = (id) => async dispatch => {
         const data = await response.json()
 
         dispatch(getSingle(data))
+
+        return data
     }
 }
 
 let initialState = {
     allMovies: {},
+    bestMovies:{},
     singleMovie: {}
 }
 
@@ -55,7 +58,8 @@ export default function moviesReducer(state = initialState, action) {
     switch(action.type) {
         case GET_ALL_MOVIES: {
             const newState = {...state, allMovies: {}}
-            action.payload.forEach(ele => newState.allMovies[ele.id] = ele)
+            action.payload.new.forEach(ele => newState.allMovies[ele.id] = ele)
+            action.payload.old.forEach(ele => newState.bestMovies[ele.id] = ele)
             return newState
         }
         case GET_SINGLE: {

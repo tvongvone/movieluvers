@@ -5,11 +5,12 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import LandingPage from "./components/LandingPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import WatchList from "./components/WatchList";
 import { getMyWatchlists } from "./store/watchlists";
 import MovieDetails from "./components/MovieDetails";
+import HomePage from "./components/HomePage";
+import './index.css'
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="app">
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -31,7 +32,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/' exact>
-            <LandingPage />
+            <HomePage />
           </Route>
           <ProtectedRoute path='/mywatchlists'>
             <WatchList />
@@ -41,7 +42,7 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

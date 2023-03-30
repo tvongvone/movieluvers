@@ -30,3 +30,7 @@ justify-content: space-between;
   flex-direction: column;
   border: solid black 1px;
 } */
+
+.nav-bar-container {
+  z-index: 100;
+}

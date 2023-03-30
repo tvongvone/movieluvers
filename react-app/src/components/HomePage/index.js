@@ -24,7 +24,7 @@ const HomePage = () => {
         <header className="banner" style={{
             backgroundSize: "cover",
             backgroundImage: `url(${movies[1].backdropPath})`,
-            backgroundPosition: "top center"
+            backgroundPosition: "top center",
         }}>
 
             <div className='banner-contents'>

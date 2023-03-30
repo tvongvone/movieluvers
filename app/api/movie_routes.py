@@ -26,4 +26,7 @@ def get_single(id):
 
 
     if single_movie:
-        return single_movie.to_dict(add_reviews=True)
+        movie =  single_movie.to_dict(add_reviews=True)
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{int(movie["apiId"])}/videos?api_key={KEY}&language=en-US')
+        movie['videos'] = response.json()['results'][0]
+        return movie

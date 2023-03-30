@@ -62,7 +62,7 @@ def seed_movies():
       movie.overview = q['overview']
       if q.__contains__('poster_path'):
          str = q['poster_path']
-         movie.posterPath = f'https://image.tmdb.org/t/p/w500{str}'
+         movie.posterPath = f'https://image.tmdb.org/t/p/original{str}'
       if q.__contains__('backdrop_path'):
          str = q['backdrop_path']
          movie.backdropPath = f'https://image.tmdb.org/t/p/original{str}'

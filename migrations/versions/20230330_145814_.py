@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 18324bb63a3b
+Revision ID: 97a1401d75ac
 Revises:
-Create Date: 2023-03-30 14:08:05.005693
+Create Date: 2023-03-30 14:58:14.118454
 
 """
 from alembic import op
@@ -13,9 +13,8 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 
-
 # revision identifiers, used by Alembic.
-revision = '18324bb63a3b'
+revision = '97a1401d75ac'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,7 +25,7 @@ def upgrade():
     op.create_table('movies',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('apiId', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=40), nullable=False),
+    sa.Column('title', sa.String(), nullable=False),
     sa.Column('overview', sa.String(), nullable=False),
     sa.Column('genre', sa.Integer(), nullable=False),
     sa.Column('posterPath', sa.String(), nullable=True),

@@ -23,17 +23,17 @@ const HomePage = () => {
         <>
         <header className="banner" style={{
             backgroundSize: "cover",
-            backgroundImage: `url(${movies[1].backdropPath})`,
+            backgroundImage: `url(${oldMovies[1].backdropPath})`,
             backgroundPosition: "top center",
         }}>
 
             <div className='banner-contents'>
-                <h1 className='banner-title'>{movies[1].title}</h1>
+                <h1 className='banner-title'>{oldMovies[1].title}</h1>
                 <div className='banner-buttons'>
                     <button className="banner-btn">Play</button>
                     <button className='banner-btn'>Watchlist</button>
                 </div>
-                <h1 className='banner-description'>{movies[1].overview}</h1>
+                <h1 className='banner-description'>{oldMovies[1].overview}</h1>
             </div>
 
             <div className="fade-bottom"></div>

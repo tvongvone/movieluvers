@@ -1,7 +1,7 @@
 
 .banner {
     position: relative;
-    height: 448px;
+    height: 500px;
     color: white;
 }
 
@@ -30,7 +30,7 @@
 }
 
 .fade-bottom {
-    height: 7.4rem;
+    height: 170px;
     background-image: linear-gradient(
         180deg,
         transparent,
@@ -57,15 +57,4 @@
     color:#000;
     background-color: #e6e6e6;
     transition: all 0.2s;
-}
-
-.movies-container {
-    display: flex;
-    flex-direction: column;
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-
-.movies-container::-webkit-scrollbar {
-    display: none;
 }

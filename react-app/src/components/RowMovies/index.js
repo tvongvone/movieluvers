@@ -1,5 +1,6 @@
 import SingleMovie from "../SingleMovie"
 import { NavLink } from "react-router-dom"
+import './rowmovies.css'
 
 
 const RowMovies = ({title ,movies}) => {

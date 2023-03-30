@@ -28,6 +28,8 @@ const MovieDetails = () => {
     const userArray = reviews.map(ele => ele.user.id)
 
     const opts = {
+        height: 500,
+        width: 700,
         playerVars: {
           autoplay: 1
         }
@@ -70,7 +72,7 @@ const MovieDetails = () => {
                         <img className='movie-info-img'src={movieDetails.posterPath} alt='' />
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
-                            <OpenModalButton modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer.key}/>} buttonText={<div className='play-button'>
+                            <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer.key}/>} buttonText={<div>
                                 <i className="fa-solid fa-play"></i>
                                 <span style={{fontSize: '18px'}}>Play</span>
                             </div>}/>
@@ -80,7 +82,9 @@ const MovieDetails = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="fade-bottom"></div>
                 </div>
+
                 <div className='reviews-container'>
                     {reviews?.map(review =>(
                         <div key={review.id}>

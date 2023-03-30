@@ -4,6 +4,7 @@ import { getMyWatchlists } from "../../store/watchlists";
 import OpenModalButton from "../OpenModalButton";
 import CreateList from "../CreateList";
 import SingleWatchList from "../SingleWatchList";
+import './watchlist.css'
 
 
 
@@ -27,7 +28,7 @@ const WatchList = () => {
             ))}
             <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
         </div>
-    ): <div>
+    ): <div className="watchlist-container">
          <h1>You currently have no list</h1>
          <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
     </div>

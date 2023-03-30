@@ -32,11 +32,12 @@ function LoginFormModal() {
     }
   };
 
+
     return (
       <div className="login-modal-wrapper">
         <div className='login-title'>
-        <i className="fa-solid fa-heart-pulse" style={{color: 'red'}}></i>
-          <div>Log in</div>
+        <i className="fa-solid fa-film" style={{color: 'red'}}></i>
+          <div style={{color: "white"}}>Log in</div>
         </div>
         <div className="login-form-container">
           <form className='login-form' onSubmit={handleSubmit}>

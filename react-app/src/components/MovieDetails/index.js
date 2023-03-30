@@ -11,7 +11,7 @@ import OpenModalButton from '../OpenModalButton'
 import axios from 'axios'
 import { useModal } from '../../context/Modal'
 
-
+const API_KEY = process.env.REACT_APP_API_KEY
 
 
 const MovieDetails = () => {
@@ -41,7 +41,7 @@ const MovieDetails = () => {
         const data = await dispatch(getSingleMovie(id))
 
         if(data) {
-            const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=ca5c34933457ac59352b1c1d718b3237&language=en-US`)
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=${API_KEY}&language=en-US`)
 
             if(response.data.results.find(ele => ele.name === 'Official Trailer')) {
                 setTrailer(response.data.results.find(ele => ele.name === 'Official Trailer'))

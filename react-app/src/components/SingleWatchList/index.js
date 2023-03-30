@@ -22,7 +22,7 @@ const SingleWatchList = ({watchlist}) => {
     return watchlist && (
         <div style={{display: 'flex', flexDirection: 'column'}}>
             <div className='watchlist-title'>
-                <h2>{watchlist.name}</h2>
+                <h1>{watchlist.name}</h1>
                     <div className='icons'>
                         <OpenModalButton modalComponent={<EditWatchlist watchlist={watchlist}/>} styleOption={'edit-pen'} buttonText={<i className="fa-solid fa-pencil"></i>}/>
                         <i onClick={() => dispatch(deleteSingleWatchlist(watchlist.id))} className="fa-solid fa-trash-can"></i>

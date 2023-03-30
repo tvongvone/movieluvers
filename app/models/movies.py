@@ -9,7 +9,7 @@ class Movie(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     apiId = db.Column(db.Integer, nullable=False)
-    title = db.Column(db.String(40), nullable=False)
+    title = db.Column(db.String, nullable=False)
     overview = db.Column(db.String, nullable=False)
     genre = db.Column(db.Integer, nullable=False)
     posterPath = db.Column(db.String)

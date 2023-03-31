@@ -43,7 +43,7 @@ const MovieDetails = () => {
         if(data) {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=${API_KEY}&language=en-US`)
 
-            if(response.data.results.find(ele => ele.name === 'Official Trailer')) {
+            if(response?.data?.results?.find(ele => ele.name === 'Official Trailer')) {
                 setTrailer(response.data.results.find(ele => ele.name === 'Official Trailer'))
             } else if (response.data.results.length){
                 setTrailer(response.data.results[response.data.results.length - 1])
@@ -72,7 +72,7 @@ const MovieDetails = () => {
                         <img className='movie-info-img'src={movieDetails.posterPath} alt='' />
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
-                            <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer.key}/>} buttonText={<div>
+                            <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
                                 <i className="fa-solid fa-play"></i>
                                 <span style={{fontSize: '18px'}}>Play</span>
                             </div>}/>

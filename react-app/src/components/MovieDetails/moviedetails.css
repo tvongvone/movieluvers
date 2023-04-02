@@ -41,9 +41,11 @@
 }
 
 .movie-description {
+    margin-left: 50px;
     display: flex;
     flex-direction: column;
     color: white;
+    justify-content: space-between;
 }
 
 * {
@@ -53,8 +55,8 @@
 .play-button {
     display: flex;
     border: solid white 1px;
-    width: 100px;
     height: 50px;
+    width: 150px;
     align-items: center;
     color:white;
     background-color: black;

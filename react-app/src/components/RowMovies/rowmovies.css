@@ -4,6 +4,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     margin-left: 20px;
+    margin-top: 10px;
 }
 
 .movies-container::-webkit-scrollbar {

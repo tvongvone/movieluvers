@@ -48,7 +48,7 @@ const MovieDetails = () => {
             } else if (response.data.results.length){
                 setTrailer(response.data.results[response.data.results.length - 1])
             } else {
-                setTrailer(false)
+                setTrailer('')
             }
         }
     }
@@ -73,14 +73,15 @@ const MovieDetails = () => {
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
                             <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
-                                <i className="fa-solid fa-play"></i>
-                                <span style={{fontSize: '18px'}}>Play</span>
+                                <i style={{marginLeft: '15px'}} className="fa-solid fa-play"></i>
+                                <span style={{marginLeft: '15px',fontSize: '18px'}}>Play trailer</span>
                             </div>}/>
                             <div className='movie-overview'>
                                 <h3>Overview</h3>
                                 <p>{movieDetails.overview}</p>
                             </div>
                         </div>
+
                     </div>
                 </div>
 

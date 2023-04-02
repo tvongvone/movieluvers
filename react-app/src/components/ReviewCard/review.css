@@ -23,3 +23,12 @@
     color: black;
     margin: 10px;
 }
+
+.fa-trash-can {
+    padding:5px;
+    margin-left: 10px;
+}
+
+.fa-trash-can:hover {
+    cursor: pointer;
+}

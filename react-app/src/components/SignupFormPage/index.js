@@ -28,51 +28,69 @@ function SignupFormPage() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+    <div className='login-page-container'>
+      <div className='login-title'>
+        <i className="fa-solid fa-film" style={{color: 'red'}}></i>
+          <div style={{color: "white"}}>Sign up</div>
+        </div>
+      <div className='login-form-container'>
+      <form className='login-form' onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
         </ul>
         <label>
           Email
+          </label>
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder='Email'
             required
           />
-        </label>
         <label>
           Username
+          </label>
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            placeholder='Username'
             required
           />
-        </label>
         <label>
           Password
+          </label>
           <input
             type="password"
             value={password}
+            placeholder='Create a password'
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
         <label>
           Confirm Password
+          </label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder='Confirm password'
             required
           />
-        </label>
-        <button type="submit">Sign Up</button>
+        <div className='login-buttons-container'>
+        <button
+          type="submit"
+          id='login-submit-button'
+        >
+          Sign up
+        </button>
+        </div>
       </form>
-    </>
+      </div>
+    </div>
   );
 }
 

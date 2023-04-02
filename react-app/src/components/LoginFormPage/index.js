@@ -1,57 +1,80 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import { useDispatch } from "react-redux";
+import { useModal } from "../../context/Modal";
+import "./LoginForm.css";
+import { getMyWatchlists } from "../../store/watchlists";
+import { NavLink, useHistory } from "react-router-dom";
 
 function LoginFormPage() {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const { closeModal } = useModal();
 
-  if (sessionUser) return <Redirect to="/" />;
+  const demoUser = async (e) => {
+    e.preventDefault();
+    const password = "password";
+    const credential = "demo@aa.io";
+    const response = await dispatch(login(credential, password));
+    dispatch(getMyWatchlists())
+    history.push('/')
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+        dispatch(getMyWatchlists())
     }
   };
 
-  return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
-  );
+
+    return (
+      <div className="login-page-container">
+        <div className='login-title'>
+        <i className="fa-solid fa-film" style={{color: 'red'}}></i>
+          <div style={{color: "white"}}>Log in</div>
+        </div>
+        <div className="login-form-container">
+          <form className='login-form' onSubmit={handleSubmit}>
+              {errors.map((error, idx) => (
+                <div key={idx}>{error}</div>
+              ))}
+            <label>
+              Email
+              </label>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='Email'
+                required
+              />
+            <label>
+              Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                placeholder='Password'
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+        <div className='login-buttons-container'>
+            <button id='login-submit-button' type="submit">Log In</button>
+          <div>OR</div>
+          <button id='demo-user-submit-button' onClick={demoUser}>Demo User</button>
+        </div>
+        <span>Don't have an account? <NavLink style={{color: 'white'}} to='/signup'>Sign up</NavLink></span>
+          </form>
+        </div>
+      </div>
+    );
 }
 
 export default LoginFormPage;

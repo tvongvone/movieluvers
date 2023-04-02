@@ -10,8 +10,8 @@ const ReviewCard = ({review}) => {
     const user  = useSelector(state => state.session.user)
     const dispatch = useDispatch();
 
-    const deleteHandler = async () => {
-        const response = await dispatch(deleteMovieReview(review.id))
+    const deleteHandler = () => {
+        dispatch(deleteMovieReview(review.id))
     }
 
     return review && (

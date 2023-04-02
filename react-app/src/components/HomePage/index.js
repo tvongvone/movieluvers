@@ -5,6 +5,7 @@ import { getAllMovies } from '../../store/movies'
 import RowMovies from '../RowMovies'
 import videoBg from '../../assets/interstellar.mp4'
 import titleImage from '../../assets/title.png'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -32,7 +33,7 @@ const HomePage = () => {
                 <img className='banner-title' src={titleImage} alt='INTERSTELLAR'/>
                 <div className='banner-buttons'>
 
-                    <button className="banner-btn">More info</button>
+                    <NavLink to={'/movies/22'}><button className="banner-btn">More info</button></NavLink>
                     <button className='banner-btn'>Watchlist</button>
                 </div>
 

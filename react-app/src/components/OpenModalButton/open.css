@@ -7,6 +7,10 @@
 }
 
 .addIcon:hover {
+    cursor: pointer;
+}
+
+.addIcon:hover {
     background-color: lightgray;
     cursor: pointer;
 }
@@ -17,4 +21,9 @@
     background-color: inherit;
     font-size: 16px;
     color: white;
+}
+
+
+.edit-pen:hover {
+    cursor: pointer;
 }

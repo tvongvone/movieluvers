@@ -12,6 +12,7 @@ function Navigation({ isLoaded }){
 			<ul className='nav-bar-content'>
 				<li>
 					<NavLink style={{textDecoration: 'none'}} exact to="/"><span className="title">TONYFLIX</span></NavLink>
+					<NavLink style={{textDecoration: 'none'}} to='/mywatchlists'><span className='watchlist-span'>Watchlist</span></NavLink>
 				</li>
 				{isLoaded && (
 					<li>

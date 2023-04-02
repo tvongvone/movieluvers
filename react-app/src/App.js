@@ -31,15 +31,15 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/' exact>
+          <ProtectedRoute path='/' exact>
             <HomePage />
-          </Route>
+          </ProtectedRoute>
           <ProtectedRoute path='/mywatchlists'>
             <WatchList />
           </ProtectedRoute>
-          <Route path='/movies/:id'>
+          <ProtectedRoute path='/movies/:id'>
             <MovieDetails />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       )}
     </div>

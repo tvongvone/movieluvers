@@ -60,6 +60,7 @@ const MovieDetails = () => {
 
         return () => {
             dispatch(removeSingle())
+            setTrailer('')
             closeModal()
         }
     }, [dispatch, id])
@@ -72,12 +73,14 @@ const MovieDetails = () => {
                         <img className='movie-info-img'src={movieDetails.posterPath} alt='' />
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
-                            <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
-                                <i style={{marginLeft: '15px'}} className="fa-solid fa-play"></i>
-                                <span style={{marginLeft: '15px',fontSize: '18px'}}>Play trailer</span>
-                            </div>}/>
                             <div className='movie-overview'>
-                                <h3>Overview</h3>
+                            {trailer && (
+                                <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
+                                    <i style={{marginLeft: '15px'}} className="fa-solid fa-play"></i>
+                                    <span style={{marginLeft: '15px',fontSize: '18px'}}>Play trailer</span>
+                                </div>}/>
+                            )}
+                                <h2 style={{marginBottom: '10px'}}>Overview</h2>
                                 <p>{movieDetails.overview}</p>
                             </div>
                         </div>

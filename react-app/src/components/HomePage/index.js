@@ -1,5 +1,5 @@
 import './homepage.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllMovies } from '../../store/movies'
 import RowMovies from '../RowMovies'
@@ -11,9 +11,11 @@ import { NavLink } from 'react-router-dom'
 
 
 
+
 const HomePage = () => {
     const dispatch = useDispatch()
     const moviesData = useSelector(state => state.movies)
+    const [showVid, setVid] = useState(true)
 
     const movies = Object.values(moviesData.allMovies)
     const oldMovies = Object.values(moviesData.bestMovies)
@@ -34,18 +36,21 @@ const HomePage = () => {
                 <div className='banner-buttons'>
 
                     <NavLink to={'/movies/22'}><button className="banner-btn">More info</button></NavLink>
-                    <button className='banner-btn'>Watchlist</button>
+                    <button onClick={() => setVid(!showVid)} className='banner-btn'>Toggle</button>
                 </div>
 
                 <div className="fade-bottom"></div>
             </div>
-            <video
-                className="bgvideo"
-                src={videoBg}
-                autoPlay
-                loop
-                muted>
-            </video>
+            {showVid && (
+                <video
+                    className="bgvideo"
+                    src={videoBg}
+                    autoPlay
+                    loop
+                    muted>
+                </video>
+            )}
+
 
 
         </div>

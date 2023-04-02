@@ -14,7 +14,9 @@ const RemoveMovie = ({movie, watchlistId}) => {
 
     return movie && (
         <div className='single-movie'>
-            <button onClick={(e) => clickHandler(e, movie.id)} className='add'>Remove</button>
+            <div  className='add'>
+                <i onClick={(e) => clickHandler(e, movie.id)} className="fa-solid fa-ban"></i>
+            </div>
             <img className="poster" src={movie.posterPath} alt='Movie Poster'/>
         </div>
     )

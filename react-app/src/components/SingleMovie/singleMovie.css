@@ -15,6 +15,7 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+    position: relative;
 }
 
 /* .image-container {
@@ -33,9 +34,33 @@
 
 .add {
     position: absolute;
-    bottom: 5px;
-    right: 10px;
+    font-size: 25px;
+    color: white;
+    background: rgba(17, 17, 17, 0.5);
+    opacity: 0;
+    transition: 0.6s;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    text-decoration: none;
 }
+
+.add:hover {
+    opacity: 1;
+}
+
+.add > i {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+.add > i:hover {
+    cursor: pointer
+}
+
+
+
 
 .plus {
     border: solid 1px black;

@@ -49,8 +49,7 @@ function ProfileButton({ user }) {
         <ul className={ulClassName} ref={ulRef}>
           {user ? (
             <>
-              <li>{user.username}</li>
-              <li><NavLink to='/mywatchlists'>My watchlists</NavLink></li>
+              <li >{user.username}</li>
               <li>
                 <button onClick={handleLogout}>Log Out</button>
               </li>

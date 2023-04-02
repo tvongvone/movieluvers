@@ -20,7 +20,7 @@ const SingleWatchList = ({watchlist}) => {
 
 
     return watchlist && (
-        <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div className='single-watchlist-row'>
             <div className='watchlist-title'>
                 <h1>{watchlist.name}</h1>
                     <div className='icons'>

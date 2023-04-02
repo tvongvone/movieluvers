@@ -1,7 +1,7 @@
 
 .banner {
     position: relative;
-    height: 500px;
+    height: 600px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,7 @@
 
 .fade-bottom {
     height: 85px;
+    margin-top: 50px;
     background-image: linear-gradient(
         180deg,
         transparent,

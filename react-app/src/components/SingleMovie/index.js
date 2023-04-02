@@ -32,8 +32,12 @@ const SingleMovie = ({movie}) => {
     document.addEventListener("mousedown", closeOpenMenus)
 
     return movie && (
+        <>
         <div className='single-movie'>
-            <button onClick={clickHandler} className='add'>Add</button>
+            <div className="add">
+                <i onClick={clickHandler} className="fa-solid fa-circle-plus"></i>
+            </div>
+
             <div ref={menu} className={movieCss}>
                 {user ? (
                     <ul style={{listStyle: 'none'}}>
@@ -44,18 +48,18 @@ const SingleMovie = ({movie}) => {
                                 dispatch(addMovieToWatchList({movieId:movie.id, watchlistId:list.id}))
                                 setMenu(!showMenu)
                             }} key={list.id} className="single-watchlist">
-                                <p style={{textOverflow: 'ellipsis'}}>{list.name}</p>
+                                <p style={{color: 'white'}}>{list.name}</p>
                             </li>
                         ))}
                     </ul>
                 ):<div>You must be logged in to add movies to your watchlist</div>}
             </div>
-
             <img className="poster" src={movie.posterPath} alt='Movie Poster'/>
 
 
 
         </div>
+        </>
     )
 }
 

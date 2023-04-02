@@ -18,3 +18,7 @@
     width: 60px;
     justify-content: space-between;
 }
+
+.single-watchlist-row {
+    height: 360px;
+}

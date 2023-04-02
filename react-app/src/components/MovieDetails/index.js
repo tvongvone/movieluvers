@@ -82,7 +82,6 @@ const MovieDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="fade-bottom"></div>
                 </div>
 
                 <div className='reviews-container'>

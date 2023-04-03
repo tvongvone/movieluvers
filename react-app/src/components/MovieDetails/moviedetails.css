@@ -98,6 +98,7 @@
     margin: 20px;
     background-color: lightcyan;
     font-weight: 700;
+    border: none;
 }
 
 .create-review-button:hover {

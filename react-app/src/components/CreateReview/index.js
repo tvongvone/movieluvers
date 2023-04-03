@@ -47,7 +47,7 @@ const CreateReview = ({id}) => {
                                 {hasSubmitted && validationErrors.length > 0 && (
                                     <label style={{color: 'red', position: 'absolute', top: '5px'}}>Please provide a brief review(0, 255) characters.</label>
                                 )}
-                                <textarea value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
+                                <textarea style={{color: 'white',backgroundColor:'#111', height: '100px'}} value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
                             </div>
 
                     </div>

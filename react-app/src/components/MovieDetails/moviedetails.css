@@ -54,17 +54,20 @@
 
 .play-button {
     display: flex;
-    border: solid white 1px;
     height: 50px;
     width: 150px;
     align-items: center;
     color:white;
     background-color: black;
     margin-bottom: 20px;
+    border: none;
 }
 
 .play-button:hover {
     cursor: pointer;
+    color:black;
+    background-color: white;
+    transition: all .2s;
 }
 
 
@@ -95,6 +98,10 @@
     margin: 20px;
     background-color: lightcyan;
     font-weight: 700;
+}
+
+.create-review-button:hover {
+    cursor: pointer
 }
 
 .form-review textarea {

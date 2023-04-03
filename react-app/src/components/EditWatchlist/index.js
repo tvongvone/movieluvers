@@ -37,7 +37,7 @@ const EditWatchlist = ({watchlist}) => {
     }, [name])
 
     return watchlist && (
-        <div>
+        <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '400px', height: '200px'}}>
             <h2>Change name</h2>
             {hasSubmitted && validationErrors.length > 0 && (
                     <div className='errors-info'>
@@ -48,8 +48,9 @@ const EditWatchlist = ({watchlist}) => {
                         </ul>
                     </div>
                 )}
-            <form onSubmit={submitHandler}>
-                <input id='name' type='text' value={name} onChange={e => setName(e.target.value)} />
+            <form className="form-review" onSubmit={submitHandler}>
+                <input style={{padding: '10px', width: '80%', marginTop: '10px'}} id='name' type='text' value={name} onChange={e => setName(e.target.value)} />
+                <button className='create-review-button' type="submit">Edit</button>
             </form>
         </div>
     )

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { deleteSingleWatchlist } from '../../store/watchlists'
 import OpenModalButton from '../OpenModalButton'
 import EditWatchlist from '../EditWatchlist'
+import { NavLink } from 'react-router-dom'
 
 const SingleWatchList = ({watchlist}) => {
     const dispatch = useDispatch()
@@ -31,7 +32,9 @@ const SingleWatchList = ({watchlist}) => {
             <div style={{display: 'flex'}}>
             {watchlist?.movies.map(movie => (
                 <div key={movie.id}>
-                    <RemoveMovie movie={movie} watchlistId={watchlist.id}/>
+                    <NavLink to={`/movies/${movie.id}`}>
+                        <RemoveMovie movie={movie} watchlistId={watchlist.id}/>
+                    </NavLink>
                 </div>
             ))}
             </div>

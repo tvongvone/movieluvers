@@ -6,6 +6,7 @@ import RowMovies from '../RowMovies'
 import videoBg from '../../assets/interstellar.mp4'
 import titleImage from '../../assets/title.png'
 import { NavLink } from 'react-router-dom'
+import {FaGithub} from 'react-icons/fa'
 
 
 
@@ -57,6 +58,17 @@ const HomePage = () => {
         <RowMovies title={'Upcoming movies'} movies={movies} />
 
         <RowMovies title={'Top Rated movies'} movies={oldMovies} />
+
+        <footer>
+            <div className="footer-container">
+            <NavLink to={{ pathname: "https://github.com/tvongvone" }} style={{ textDecoration: "none", color: "inherit" }} target="_blank" rel="noreferrer">
+            <div className="logo-container">
+            <FaGithub className="logo" />
+            <div>Tony Vongvone</div>
+        </div>
+          </NavLink>
+            </div>
+        </footer>
 
 </>
     ): <div>Loading</div>

@@ -1,13 +1,14 @@
 .profile-dropdown {
-  position: absolute;
   display: flex;
   flex-direction: column;
-  border: solid black 1px;
+  position: absolute;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  padding: 20px;
+  right: 40px;
+  margin-top: 20px;
+  list-style: none;
   background-color: #111;
-  right: 40px
 }
 
 .hidden {
@@ -23,9 +24,6 @@ margin: 10px 20px;
 height: 50px;
 }
 
-.pbutton {
-  position: relative
-}
 
 /* .profile-dropdown {
   display: flex;
@@ -45,6 +43,11 @@ height: 50px;
 );
 }
 
+.nav-bar-left {
+  display: flex;
+  align-items: center;
+}
+
 .title {
   font-size: 29px;
   color: rgb(176, 7, 7);
@@ -55,11 +58,48 @@ height: 50px;
 
 .watchlist-span {
   color: white;
-  font-size: 20px;
+  font-size: 14px;
   margin-left: 40px;
-  font-weight: 700;
+  font-weight: 200;
+  font-family: "Gill Sans", sans-serif;
 }
 
 .watchlist-span:hover {
   cursor: pointer;
+}
+
+.avatar {
+  object-fit: cover;
+  height: 30px;
+  width: 30px;
+}
+
+.nav-bar-right {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.fa-caret-down {
+  margin-left: 10px;
+}
+
+
+.fa-caret-down:hover {
+    transition: 0.9s;
+    transform: rotateY(90deg);
+}
+
+
+.logout-btn {
+  margin-top: 10px;
+  background-color: #111;
+  border: none;
+  color: white;
+  transition: transform .2s;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

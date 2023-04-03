@@ -10,7 +10,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div className="nav-bar-container">
 			<ul className='nav-bar-content'>
-				<li>
+				<li className='nav-bar-left'>
 					<NavLink style={{textDecoration: 'none'}} exact to="/"><span className="title">TONYFLIX</span></NavLink>
 					<NavLink style={{textDecoration: 'none'}} to='/mywatchlists'><span className='watchlist-span'>Watchlist</span></NavLink>
 				</li>

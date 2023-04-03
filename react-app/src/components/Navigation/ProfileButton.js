@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import pic from '../../assets/avatar.png'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -42,35 +43,22 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button style={{marginRight: '5px'}} onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <div className='pbutton'>
-        <ul className={ulClassName} ref={ulRef}>
-          {user ? (
-            <>
+      {user && (
+        <div>
+          <div className='nav-bar-right'>
+              <img className="avatar" src={pic} alt='netflix avatar' />
+              <i onMouseOver={openMenu} className="fa-solid fa-caret-down"></i>
+          </div>
+
+        <ul onMouseOver={openMenu} onMouseOut={closeMenu} className={ulClassName} ref={ulRef}>
               <li >{user.username}</li>
               <li>
-                <button onClick={handleLogout}>Log Out</button>
+                <button className='logout-btn' onClick={handleLogout}>Log Out</button>
               </li>
-            </>
-          ) : (
-            <>
-              <OpenModalButton
-                buttonText="Log In"
-                onItemClick={closeMenu}
-                modalComponent={<LoginFormModal />}
-              />
-
-              <OpenModalButton
-                buttonText="Sign Up"
-                onItemClick={closeMenu}
-                modalComponent={<SignupFormModal />}
-              />
-            </>
-          )}
         </ul>
-      </div>
+        </div>
+      )}
+
     </>
   );
 }

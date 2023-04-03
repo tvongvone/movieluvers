@@ -40,13 +40,19 @@ const CreateReview = ({id}) => {
 
     return (
         <div className='add-review'>
-            <h2 className='profile-name'>{user.username[0]}</h2>
                 <form onSubmit={submitHandler} className='form-review'>
-                    {hasSubmitted && validationErrors.length > 0 && (
-                        <label style={{color: 'red'}}>Please provide a brief review(0, 255) characters.</label>
-                    )}
-                    <textarea value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
-                    <button type='submit'>Submit</button>
+                    <div style={{display: 'flex', alignContent: 'center', width: '100%', justifyContent: 'center', marginLeft: '60px'}}>
+                        <h2 className='profile-name'>{user.username[0]}</h2>
+                            <div style={{display:'flex', flexDirection:'column', position:'relative', width: '100%'}}>
+                                {hasSubmitted && validationErrors.length > 0 && (
+                                    <label style={{color: 'red', position: 'absolute', top: '5px'}}>Please provide a brief review(0, 255) characters.</label>
+                                )}
+                                <textarea value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
+                            </div>
+
+                    </div>
+
+                    <button className="create-review-button" type='submit'>Submit</button>
                 </form>
         </div>
     )

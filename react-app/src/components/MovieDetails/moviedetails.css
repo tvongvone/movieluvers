@@ -77,13 +77,24 @@
 .add-review {
     display: flex;
     align-items: center;
-    margin-left: 50px;
     margin-top: 20px;
+    margin-right: 20px;
 }
 
 
 .form-review {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-review-button {
+    padding: 10px;
+    border-radius: 20px;
+    margin: 20px;
+    background-color: lightcyan;
+    font-weight: 700;
 }
 
 .form-review textarea {

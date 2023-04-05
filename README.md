@@ -61,5 +61,21 @@ npm start
 
 ## Technical Challenges
 
-Trying to fetch videos from an external api by passing in the id that came with the movie that I seeded in the backend
+Trying to fetch videos from an external api by passing in the id that came with the movie that I seeded in the backend. The external api returns a array of videos so I write conditionals to set the trailer state to the Official trailer if it exists 
+      
+    const fetchVideo = async () => {
 
+        const data = await dispatch(getSingleMovie(id))
+
+        if(data) {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=${API_KEY}&language=en-US`)
+
+            if(response?.data?.results?.find(ele => ele.name === 'Official Trailer')) {
+                setTrailer(response.data.results.find(ele => ele.name === 'Official Trailer'))
+            } else if (response.data.results.length){
+                setTrailer(response.data.results[response.data.results.length - 1])
+            } else {
+                setTrailer('')
+            }
+        }
+    }

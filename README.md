@@ -56,3 +56,10 @@ npm start
 ```
 
 ## Landing Page
+
+![project_pic png](https://user-images.githubusercontent.com/107327260/230163426-0cc11ae3-193f-42d5-b3fc-5a70ac453ed1.png)
+
+## Technical Challenges
+
+Trying to fetch videos from an external api by passing in the id that came with the movie that I seeded in the backend
+

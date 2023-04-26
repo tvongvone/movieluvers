@@ -30,6 +30,7 @@ function LoginFormPage() {
       setErrors(data);
     } else {
         dispatch(getMyWatchlists())
+        history.push('/')
     }
   };
 

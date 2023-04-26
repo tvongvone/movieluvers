@@ -2,6 +2,8 @@
 
 TONYFLIX is a netflix inspired website where you can view popular and upcoming films.
 
+Here is the livelink! <a href="https://movieluvers.onrender.com">TONYFLIX</a> 🎥
+
 ## Wiki
 - [Feature List](https://github.com/tvongvone/movieluvers/wiki/Feature-list)
 - [User Stories](https://github.com/tvongvone/movieluvers/wiki/User-Stories)
@@ -56,3 +58,26 @@ npm start
 ```
 
 ## Landing Page
+
+![project_pic png](https://user-images.githubusercontent.com/107327260/230163426-0cc11ae3-193f-42d5-b3fc-5a70ac453ed1.png)
+
+## Technical Challenges
+
+Trying to fetch videos from an external api by passing in the id that came with the movie that I seeded in the backend. The external api returns a array of videos so I write conditionals to set the trailer state to the Official trailer if it exists 
+      
+    const fetchVideo = async () => {
+
+        const data = await dispatch(getSingleMovie(id))
+
+        if(data) {
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/${data.apiId}/videos?api_key=${API_KEY}&language=en-US`)
+
+            if(response?.data?.results?.find(ele => ele.name === 'Official Trailer')) {
+                setTrailer(response.data.results.find(ele => ele.name === 'Official Trailer'))
+            } else if (response.data.results.length){
+                setTrailer(response.data.results[response.data.results.length - 1])
+            } else {
+                setTrailer('')
+            }
+        }
+    }

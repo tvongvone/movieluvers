@@ -37,7 +37,7 @@ const HomePage = () => {
                 <div className='banner-buttons'>
 
                     <NavLink to={'/movies/22'}><button className="banner-btn">More info</button></NavLink>
-                    <button onClick={() => setVid(!showVid)} className='banner-btn'>Toggle</button>
+                    <button onClick={() => setVid(!showVid)} className='banner-btn'>Display</button>
                 </div>
 
                 <div className="fade-bottom"></div>

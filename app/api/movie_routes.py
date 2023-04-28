@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import Movie
 import requests
@@ -30,3 +30,14 @@ def get_single(id):
         response = requests.get(f'https://api.themoviedb.org/3/movie/{int(movie["apiId"])}/videos?api_key={KEY}&language=en-US')
         movie['videos'] = response.json()['results'][0]
         return movie
+
+@movie_routes.route('/results', methods=['POST'])
+def get_results():
+
+    res = request.get_json()
+
+    print(res)
+
+    movie_results = Movie.query.filter(Movie.title.ilike(f"%{res['movieInput']}%")).all()
+
+    return [movie.to_dict() for movie in movie_results]

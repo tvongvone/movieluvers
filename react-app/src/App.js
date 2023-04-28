@@ -11,6 +11,7 @@ import { getMyWatchlists } from "./store/watchlists";
 import MovieDetails from "./components/MovieDetails";
 import HomePage from "./components/HomePage";
 import './index.css'
+import SearchComponent from "./components/SearchComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           <ProtectedRoute path='/mywatchlists'>
             <WatchList />
           </ProtectedRoute>
+          <Route path='/movies/results'>
+            <SearchComponent />
+          </Route>
           <ProtectedRoute path='/movies/:id'>
             <MovieDetails />
           </ProtectedRoute>

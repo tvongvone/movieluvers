@@ -10,6 +10,7 @@ import YouTube from 'react-youtube'
 import OpenModalButton from '../OpenModalButton'
 import axios from 'axios'
 import { useModal } from '../../context/Modal'
+import ReactStars from 'react-rating-stars-component'
 
 const API_KEY = process.env.REACT_APP_API_KEY
 
@@ -18,14 +19,28 @@ const MovieDetails = () => {
     const dispatch = useDispatch();
     const {id} = useParams()
     const [trailer, setTrailer] = useState('')
+    const [rating, setRating] = useState(0)
     const movieDetails = useSelector(state => state.movies.singleMovie)
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
 
     const {closeModal} = useModal()
     const reviews = Object.values(reviewData.movieReviews)
+    let sum = 0;
+    let message;
 
     const userArray = reviews.map(ele => ele.user.id)
+
+    const ratings = reviews.map(ele => ele.rating)
+
+    if(ratings.length) {
+        for(let i = 0; i < ratings.length; i++) {
+            sum += ratings[i]
+        }
+
+        sum = sum / ratings.length
+    }
+
 
     const opts = {
         height: 500,
@@ -74,6 +89,15 @@ const MovieDetails = () => {
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
                             <div className='movie-overview'>
+                            {ratings.length ? (
+                                <div style={{'display': 'flex', 'textAlign': 'center'}}>
+                                <ReactStars size={40} count={5} isHalf={true} color='white'
+                                    emptyIcon={<i className="far fa-star" />}
+                                    value={sum} edit={false}/>
+                                {sum}
+                                </div>
+                            ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}
+
                             {trailer && (
                                 <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
                                     <i style={{marginLeft: '15px'}} className="fa-solid fa-play"></i>

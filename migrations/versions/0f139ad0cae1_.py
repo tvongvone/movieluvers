@@ -1,20 +1,16 @@
 """empty message
 
-Revision ID: 03dd035d3b5c
-Revises:
-Create Date: 2023-03-31 08:14:40.970078
+Revision ID: 0f139ad0cae1
+Revises: 
+Create Date: 2023-05-02 00:55:22.563940
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = '03dd035d3b5c'
+revision = '0f139ad0cae1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,6 +42,7 @@ def upgrade():
     sa.Column('review', sa.String(length=255), nullable=False),
     sa.Column('movieId', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
+    sa.Column('rating', sa.Float(), nullable=False),
     sa.ForeignKeyConstraint(['movieId'], ['movies.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -64,11 +61,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['watchlist_id'], ['watchlists.id'], ),
     sa.PrimaryKeyConstraint('watchlist_id', 'movie_id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-    # ### end Alembic commands ###qqqqqqqqq
-
     # ### end Alembic commands ###
 
 

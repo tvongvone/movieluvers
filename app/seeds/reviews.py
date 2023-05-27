@@ -3,17 +3,17 @@ from sqlalchemy.sql import text
 
 
 def seed_reviews():
-    r1 = Review(review='This movie was pretty cool!', movieId=1, userId=1)
-    r2 = Review(review='Ive seen better!', movieId=2, userId=1)
-    r3 = Review(review='Favorite movie ever!', movieId=3, userId=1)
+    r1 = Review(review='This movie was pretty cool!', movieId=1, userId=1, rating=4)
+    r2 = Review(review='Ive seen better!', movieId=2, userId=1, rating=2)
+    r3 = Review(review='Favorite movie ever!', movieId=3, userId=1, rating=5)
 
-    r4 = Review(review='I like the vibe of this movie', movieId=1, userId=2)
-    r5 = Review(review='This movie was amazing', movieId=2, userId=2)
-    r6 = Review(review='Its alright', movieId=3, userId=2)
+    r4 = Review(review='I like the vibe of this movie', movieId=1, userId=2, rating=3.5)
+    r5 = Review(review='This movie was amazing', movieId=2, userId=2, rating=4.5)
+    r6 = Review(review='Its alright', movieId=3, userId=2, rating=3)
 
-    r7 = Review(review='I love this movie!!!', movieId=4, userId=3)
-    r8 = Review(review='This was a crazy experience!', movieId=5, userId=3)
-    r9 = Review(review='This is why I love movies!!!', movieId=6, userId=3)
+    r7 = Review(review='I love this movie!!!', movieId=4, userId=3, rating=5)
+    r8 = Review(review='This was a crazy experience!', movieId=5, userId=3, rating=4.5)
+    r9 = Review(review='This is why I love movies!!!', movieId=6, userId=3, rating=5)
 
     db.session.add_all([r1,r2,r3,r4,r5,r6,r7,r8,r9])
     db.session.commit()

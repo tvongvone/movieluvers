@@ -10,6 +10,7 @@ class Review(db.Model):
     review = db.Column(db.String(255), nullable=False)
     movieId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("movies.id")), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    rating = db.Column(db.Float, nullable=False)
 
     user = db.relationship("User", back_populates="reviews")
     movie = db.relationship("Movie", back_populates="reviews")
@@ -19,7 +20,8 @@ class Review(db.Model):
             "id": self.id,
             "review": self.review,
             "movieId": self.movieId,
-            "userId": self.userId
+            "userId": self.userId,
+            "rating": self.rating
         }
 
         if(add_user):

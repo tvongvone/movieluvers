@@ -41,7 +41,7 @@ const SingleMovie = ({movie}) => {
             <div ref={menu} className={movieCss}>
                 {user ? (
                     <ul style={{listStyle: 'none'}}>
-                        <li>Add to Watchlists</li>
+                        <li style={{'color': 'white'}}>Add to Watchlists</li>
                         {userWatchlist?.map(list => (
                             <li onClick={e => {
                                 e.preventDefault()

@@ -19,7 +19,7 @@ const MovieDetails = () => {
     const dispatch = useDispatch();
     const {id} = useParams()
     const [trailer, setTrailer] = useState('')
-    const [rating, setRating] = useState(0)
+    const [rate, setRating] = useState(0)
     const movieDetails = useSelector(state => state.movies.singleMovie)
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
@@ -27,7 +27,6 @@ const MovieDetails = () => {
     const {closeModal} = useModal()
     const reviews = Object.values(reviewData.movieReviews)
     let sum = 0;
-    let message;
 
     const userArray = reviews.map(ele => ele.user.id)
 
@@ -71,8 +70,7 @@ const MovieDetails = () => {
         // dispatch(getSingleMovie(id))
         fetchVideo()
         dispatch(getMovieReviews(id))
-
-
+        setRating(sum)
         return () => {
             dispatch(removeSingle())
             setTrailer('')
@@ -90,11 +88,11 @@ const MovieDetails = () => {
                             <h1>{movieDetails.title}</h1>
                             <div className='movie-overview'>
                             {ratings.length ? (
-                                <div style={{'display': 'flex', 'textAlign': 'center'}}>
-                                <ReactStars size={40} count={5} isHalf={true} color='white'
+                                <div style={{'display': 'flex', 'alignItems': 'flex-end'}}>
+                                <ReactStars size={30} count={5} isHalf={true} color='white'
                                     emptyIcon={<i className="far fa-star" />}
-                                    value={sum} edit={false}/>
-                                {sum}
+                                    value={sum}/>
+                                <div style={{'marginBottom': '7px'}}>({sum})</div>
                                 </div>
                             ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}
 
@@ -119,7 +117,11 @@ const MovieDetails = () => {
                         </div>
                     ))}
                     {user && !userArray.includes(user?.id) && (
-                        <CreateReview id={id}/>
+                        <>
+                            <div style={{'marginLeft': '40px', 'marginTop': '40px'}}>Leave a review</div>
+                            <CreateReview id={id}/>
+                        </>
+
                     )}
                     {!user && (
                         <h3>Log in to leave a review</h3>

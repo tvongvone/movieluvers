@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { createMovieReview } from "../../store/reviews"
 import { useDispatch } from "react-redux"
+import ReactStars from 'react-rating-stars-component'
 
 const CreateReview = ({id}) => {
     const user = useSelector(state => state.session.user)
@@ -10,6 +11,7 @@ const CreateReview = ({id}) => {
     const [reviewText, setReview] = useState('')
     const [hasSubmitted, setSubmitted] = useState(false)
     const [validationErrors, setErrors] = useState([])
+    const [stars, setStars] = useState(0)
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -31,6 +33,8 @@ const CreateReview = ({id}) => {
 
     }
 
+    console.log(stars)
+
     useEffect(() => {
         const errors = []
         if (!reviewText) errors.push('Please enter a name for this Watchlist')
@@ -44,6 +48,11 @@ const CreateReview = ({id}) => {
                     <div style={{display: 'flex', alignContent: 'center', width: '100%', justifyContent: 'center', marginLeft: '60px'}}>
                         <h2 className='profile-name'>{user.username[0]}</h2>
                             <div style={{display:'flex', flexDirection:'column', position:'relative', width: '100%'}}>
+                            <div style={{'marginBottom':'10px'}}>
+                            <ReactStars size={20} count={5} isHalf={false} activeColor='yellow' color='white'
+                                emptyIcon={<i className="far fa-star" />}
+                                filledIcon={<i className="fa fa-star" />} value={stars} onChange={e => setStars(e)}/>
+                                </div>
                                 {hasSubmitted && validationErrors.length > 0 && (
                                     <label style={{color: 'red', position: 'absolute', top: '5px'}}>Please provide a brief review(0, 255) characters.</label>
                                 )}

@@ -24,6 +24,7 @@ def get_reviews(id):
 
     return [review.to_dict(add_user=True) for review in reviews]
 
+# Create review for a movie
 @review_routes.route('/new', methods=['POST'])
 @login_required
 def post_review():
@@ -34,7 +35,7 @@ def post_review():
     form["csrf_token"].data = request.cookies["csrf_token"]
 
     if form.validate_on_submit():
-        reviewdata = Review(review=res['review'], movieId=res['movieId'], userId=current_user.id)
+        reviewdata = Review(review=res['review'], movieId=res['movieId'], userId=current_user.id, rating=res['rating'])
         db.session.add(reviewdata)
         db.session.commit()
         return reviewdata.to_dict(add_user=True)

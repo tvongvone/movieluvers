@@ -20,7 +20,7 @@ const CreateReview = ({id}) => {
 
         if(validationErrors.length) return "Your review has errors"
 
-        const data = await dispatch(createMovieReview({movieId: id, review: reviewText}))
+        const data = await dispatch(createMovieReview({movieId: id, review: reviewText, rating: stars}))
 
         if(data) {
             setErrors(data)
@@ -28,6 +28,7 @@ const CreateReview = ({id}) => {
             setSubmitted(false)
             setErrors([])
             setReview('')
+            setStars(0)
         }
 
 

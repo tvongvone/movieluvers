@@ -32,6 +32,8 @@ export const getMovieReviews = (id) => async dispatch => {
         const data = await response.json()
 
         dispatch(getReviews(data))
+
+        return data
     }
 }
 
@@ -90,7 +92,6 @@ export const deleteMovieReview = (id) => async dispatch => {
         dispatch(deleteReview(id))
     }
 }
-
 
 const initialState = {
     movieReviews: {}

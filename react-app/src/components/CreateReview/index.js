@@ -34,8 +34,6 @@ const CreateReview = ({id}) => {
 
     }
 
-    console.log(stars)
-
     useEffect(() => {
         const errors = []
         if (!reviewText) errors.push('Please enter a name for this Watchlist')

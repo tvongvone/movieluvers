@@ -68,7 +68,6 @@ export const getMovieResults = (obj) => async dispatch => {
 
     if(response.ok) {
         const data = await response.json()
-        console.log(data)
         dispatch(getResults(data))
     }
 }

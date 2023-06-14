@@ -26,20 +26,10 @@ const MovieDetails = () => {
 
     const {closeModal} = useModal()
     const reviews = Object.values(reviewData.movieReviews)
-    let sum = 0;
 
     const userArray = reviews.map(ele => ele.user.id)
 
     const ratings = reviews.map(ele => ele.rating)
-
-    if(ratings.length) {
-        for(let i = 0; i < ratings.length; i++) {
-            sum += ratings[i]
-        }
-
-        sum = sum / ratings.length
-    }
-
 
     const opts = {
         height: 500,
@@ -48,7 +38,6 @@ const MovieDetails = () => {
           autoplay: 1
         }
     }
-
 
     const fetchVideo = async () => {
 
@@ -66,17 +55,29 @@ const MovieDetails = () => {
             }
         }
     }
+
+    console.log(rate)
+
     useEffect(() => {
         // dispatch(getSingleMovie(id))
         fetchVideo()
         dispatch(getMovieReviews(id))
-        setRating(sum)
+
+        if(ratings.length) {
+            let sum = 0
+            for(let i = 0; i < ratings.length; i++) {
+                sum += ratings[i]
+            }
+
+            setRating(sum / ratings.length)
+        }
+
         return () => {
             dispatch(removeSingle())
             setTrailer('')
             closeModal()
         }
-    }, [dispatch, id])
+    }, [dispatch, id, rate])
 
     return movieDetails && (
         <div className="details-container">
@@ -89,10 +90,10 @@ const MovieDetails = () => {
                             <div className='movie-overview'>
                             {ratings.length ? (
                                 <div style={{'display': 'flex', 'alignItems': 'flex-end'}}>
-                                <ReactStars size={30} count={5} isHalf={true} color='white'
+                                <ReactStars size={30} count={5} isHalf={true} color='white' onChange={null} edit={false}
                                     emptyIcon={<i className="far fa-star" />}
-                                    value={sum}/>
-                                <div style={{'marginBottom': '7px'}}>({sum})</div>
+                                    value={rate}/>
+                                <div style={{'marginBottom': '7px'}}>({rate})</div>
                                 </div>
                             ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}
 

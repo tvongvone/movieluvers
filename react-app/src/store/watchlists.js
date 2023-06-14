@@ -54,7 +54,6 @@ export const getMyWatchlists = () => async dispatch => {
 }
 // Create a single watchlist
 export const createWatchList = (obj) => async dispatch => {
-    console.log('THIS HAPPENED')
     const response = await fetch('/api/watchlists/new', {
         method: 'POST',
         headers: {

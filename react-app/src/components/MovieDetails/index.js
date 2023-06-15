@@ -23,6 +23,7 @@ const MovieDetails = () => {
     const movieDetails = useSelector(state => state.movies.singleMovie)
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
+    const [starKey, setStar] = useState(0)
 
     const {closeModal} = useModal()
     const reviews = Object.values(reviewData.movieReviews)
@@ -31,11 +32,30 @@ const MovieDetails = () => {
 
     const ratings = reviews.map(ele => ele.rating)
 
+
+
     const opts = {
         height: 500,
         width: 700,
         playerVars: {
           autoplay: 1
+        }
+    }
+
+    const getRatings = async () => {
+        const data = await dispatch(getMovieReviews(id))
+
+        if(data) {
+            let sum = 0
+            if(data) {
+
+                for(let i = 0; i < data.length; i++) {
+                    sum += data[i].rating
+                }
+
+                setRating(sum / ratings.length)
+                setStar(Math.floor(Math.random() * (100 - 1) + 1))
+            }
         }
     }
 
@@ -58,19 +78,19 @@ const MovieDetails = () => {
 
     console.log(rate)
 
-    useEffect(() => {
+    useEffect(async () => {
         // dispatch(getSingleMovie(id))
-        fetchVideo()
-        dispatch(getMovieReviews(id))
+        await fetchVideo()
+        // dispatch(getMovieReviews(id))
+        await getRatings()
+        // if(ratings.length) {
+        //     let sum = 0
+        //     for(let i = 0; i < ratings.length; i++) {
+        //         sum += ratings[i]
+        //     }
 
-        if(ratings.length) {
-            let sum = 0
-            for(let i = 0; i < ratings.length; i++) {
-                sum += ratings[i]
-            }
-
-            setRating(sum / ratings.length)
-        }
+        //     setRating(sum / ratings.length)
+        // }
 
         return () => {
             dispatch(removeSingle())
@@ -90,9 +110,9 @@ const MovieDetails = () => {
                             <div className='movie-overview'>
                             {ratings.length ? (
                                 <div style={{'display': 'flex', 'alignItems': 'flex-end'}}>
-                                <ReactStars size={30} count={5} isHalf={true} color='white' onChange={null} edit={false}
+                                <ReactStars size={30} count={5} isHalf={true} color='white'
                                     emptyIcon={<i className="far fa-star" />}
-                                    value={rate}/>
+                                    value={rate} key={starKey} />
                                 <div style={{'marginBottom': '7px'}}>({rate})</div>
                                 </div>
                             ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}

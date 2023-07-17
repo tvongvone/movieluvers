@@ -113,7 +113,7 @@ const MovieDetails = () => {
                                 <ReactStars size={30} count={5} isHalf={true} color='white'
                                     emptyIcon={<i className="far fa-star" />}
                                     value={rate} key={starKey} />
-                                <div style={{'marginBottom': '7px'}}>({rate})</div>
+                                <div style={{'marginBottom': '7px'}}>({rate.toFixed(1)})</div>
                                 </div>
                             ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}
 

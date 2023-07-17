@@ -44,7 +44,7 @@ const EditReview = ({review}) => {
     return (
         <div className='add-review'>
                 <form onSubmit={submitHandler} className='form-review'>
-                    <h2>Edit review</h2>
+
                     {hasSubmitted && validationErrors.length > 0 && (
                         <label style={{color: 'red'}}>Please provide a brief review(0, 255) characters.</label>
                     )}

@@ -45,7 +45,6 @@ const CreateReview = ({id}) => {
         <div className='add-review'>
                 <form onSubmit={submitHandler} className='form-review'>
                     <div style={{display: 'flex', alignContent: 'center', width: '100%', justifyContent: 'center', marginLeft: '60px'}}>
-                        <h2 className='profile-name'>{user.username[0]}</h2>
                             <div style={{display:'flex', flexDirection:'column', position:'relative', width: '100%'}}>
                             <div style={{'marginBottom':'10px'}}>
                             <ReactStars size={20} count={5} isHalf={false} activeColor='yellow' color='white'
@@ -53,9 +52,9 @@ const CreateReview = ({id}) => {
                                 filledIcon={<i className="fa fa-star" />} value={stars} onChange={e => setStars(e)}/>
                                 </div>
                                 {hasSubmitted && validationErrors.length > 0 && (
-                                    <label style={{color: 'red', position: 'absolute', top: '5px'}}>Please provide a brief review(0, 255) characters.</label>
+                                    <label style={{color: 'red', top: '5px'}}>Please provide a brief review(0, 1000) characters.</label>
                                 )}
-                                <textarea style={{color: 'white',backgroundColor:'#111', height: '100px'}} value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
+                                <textarea style={{color: 'white',backgroundColor:'#111', height: '100px', width: '92%'}} value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
                             </div>
 
                     </div>

@@ -1,6 +1,7 @@
 .details-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .details-content {
@@ -94,15 +95,16 @@
 
 .create-review-button {
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     margin: 20px;
-    background-color: lightcyan;
+    background-color: lightgray;
     font-weight: 700;
     border: none;
 }
 
 .create-review-button:hover {
-    cursor: pointer
+    cursor: pointer;
+    background-color: gray;
 }
 
 .form-review textarea {

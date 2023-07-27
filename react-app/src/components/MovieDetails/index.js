@@ -76,7 +76,7 @@ const MovieDetails = () => {
         }
     }
 
-    console.log(rate)
+    // console.log(rate)
 
     useEffect(async () => {
         // dispatch(getSingleMovie(id))

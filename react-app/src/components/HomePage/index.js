@@ -71,7 +71,7 @@ const HomePage = () => {
         </footer>
 
 </>
-    ): <div>Loading</div>
+    ): <div style={{display: 'flex', justifyContent: 'center', marginTop: '100px', color: 'white'}}>Loading...</div>
 }
 
 

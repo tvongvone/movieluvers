@@ -13,11 +13,13 @@ movie_routes = Blueprint('movies', __name__)
 def get_movies():
     old_movies = Movie.query.filter(Movie.genre == 1)
     new_movies = Movie.query.filter(Movie.genre == 2)
+    upcoming_movies = Movie.query.filter(Movie.genre == 3)
 
     old = [movie.to_dict() for movie in old_movies]
     new = [movie.to_dict() for movie in new_movies]
+    upcoming = [movie.to_dict() for movie in upcoming_movies]
 
-    return {'old': old, 'new': new}
+    return {'old': old, 'new': new, 'upcoming': upcoming}
 
 @movie_routes.route('/<int:id>')
 def get_single(id):

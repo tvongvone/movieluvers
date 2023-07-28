@@ -20,6 +20,7 @@ const HomePage = () => {
 
     const movies = Object.values(moviesData.allMovies)
     const oldMovies = Object.values(moviesData.bestMovies)
+    const upcoming = Object.values(moviesData.upcomingMovies)
 
     useEffect(() => {
         dispatch(getAllMovies())
@@ -55,9 +56,14 @@ const HomePage = () => {
 
 
         </div>
-        <RowMovies title={'Upcoming movies'} movies={movies} />
+
+        <RowMovies title={'Recommended movies'} movies={movies} />
+
+        <RowMovies title={'Upcoming movies'} movies={upcoming} />
 
         <RowMovies title={'Top Rated movies'} movies={oldMovies} />
+
+
 
         <footer>
             <div className="footer-container">

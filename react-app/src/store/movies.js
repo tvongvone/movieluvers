@@ -75,6 +75,7 @@ export const getMovieResults = (obj) => async dispatch => {
 let initialState = {
     allMovies: {},
     bestMovies:{},
+    upcomingMovies: {},
     singleMovie: {},
     results: {}
 }
@@ -85,6 +86,7 @@ export default function moviesReducer(state = initialState, action) {
             const newState = {...state, allMovies: {}}
             action.payload.new.forEach(ele => newState.allMovies[ele.id] = ele)
             action.payload.old.forEach(ele => newState.bestMovies[ele.id] = ele)
+            action.payload.upcoming.forEach(ele => newState.upcomingMovies[ele.id] = ele)
             return newState
         }
         case GET_SINGLE: {

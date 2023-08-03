@@ -125,11 +125,15 @@ const MovieDetails = () => {
                             )}
                                 <h2 style={{marginBottom: '10px'}}>Overview</h2>
                                 <p>{movieDetails.overview}</p>
+
                             </div>
                         </div>
 
                     </div>
                 </div>
+                <div className="fade-bottom" style={{position: 'absolute', top: '570px'}}></div>
+
+
 
                 <div className='reviews-container'>
                     {reviews?.map(review =>(

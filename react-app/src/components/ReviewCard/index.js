@@ -20,7 +20,7 @@ const ReviewCard = ({review}) => {
                 <div style={{display: 'flex', alignItems: 'center'}}>
                 <h2 className='profile-name'>{review.user.username[0].toUpperCase()}</h2>
                 <h3>A review by {review.user.username}</h3>
-                <span style={{marginLeft: '10px', fontSize: '14px'}}>{review.rating}/5</span>
+                {/* <span style={{marginLeft: '10px', fontSize: '14px'}}>{review.rating}/5</span> */}
                 </div>
                 {user?.id === review.userId && (
                     <div style={{marginRight: '20px'}}>

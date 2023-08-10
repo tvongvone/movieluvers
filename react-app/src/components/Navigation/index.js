@@ -43,7 +43,7 @@ function Navigation({ isLoaded }){
 					<li ref={menu} style={{display: 'flex', alignItems: 'center'}}>
 						{showBar ? (
 							<form onSubmit={submitHandler} >
-								<input style={{color: 'white', backgroundColor: 'black', border: 'solid white 1px', borderRadius: '10px', padding: '5px'}} className='search-input' value={searchInput} onChange={e => setSearch(e.target.value)} placeholder='Search Titles'></input>
+								<input style={{color: 'white', backgroundColor: 'black', border: 'solid white 1px', borderRadius: '10px', padding: '5px'}} className='search-input' value={searchInput} onChange={e => setSearch(e.target.value)} placeholder='Search by title'></input>
 							</form>
 
 						):

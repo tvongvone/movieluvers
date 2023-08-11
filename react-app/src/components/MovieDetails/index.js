@@ -143,7 +143,7 @@ const MovieDetails = () => {
                     ))}
                     {user && !userArray.includes(user?.id) && (
                         <>
-                            <div style={{'marginLeft': '40px', 'marginTop': '40px'}}>Leave a review</div>
+                            <div style={{'marginLeft': '30px', 'marginTop': '40px'}}>Leave a review</div>
                             <CreateReview id={id}/>
                         </>
 

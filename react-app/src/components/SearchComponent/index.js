@@ -24,7 +24,7 @@ function SearchComponent() {
                         </div>
                     ))}
                 </div>
-            ): <div>Couldn't find what you were looking for</div>}
+            ): <div style={{display: 'flex', justifyContent: 'center', padding: '100px'}}>Couldn't find what you were looking for</div>}
         </div>
     )
 }

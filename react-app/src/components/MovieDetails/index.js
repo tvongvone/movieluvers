@@ -46,6 +46,7 @@ const MovieDetails = () => {
         const data = await dispatch(getMovieReviews(id))
 
         if(data) {
+            // TODO: Fix ratings bug, one state behind when adding a review
             let sum = 0
             if(data) {
 

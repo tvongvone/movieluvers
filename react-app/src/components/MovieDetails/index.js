@@ -47,6 +47,7 @@ const MovieDetails = () => {
 
         if(data) {
             // TODO: Fix ratings bug, one state behind when adding a review
+            // Before bug fix
             let sum = 0
             if(data) {
 

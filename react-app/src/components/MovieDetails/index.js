@@ -45,6 +45,8 @@ const MovieDetails = () => {
     const getRatings = async () => {
         const data = await dispatch(getMovieReviews(id))
 
+        console.log(data)
+
         if(data) {
             // TODO: Fix ratings bug, one state behind when adding a review
             // Before bug fix

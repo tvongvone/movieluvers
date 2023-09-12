@@ -19,20 +19,16 @@ const MovieDetails = () => {
     const dispatch = useDispatch();
     const {id} = useParams()
     const [trailer, setTrailer] = useState('')
-    const [rate, setRating] = useState(0)
     const movieDetails = useSelector(state => state.movies.singleMovie)
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)
-    const [starKey, setStar] = useState(0)
 
     const {closeModal} = useModal()
     const reviews = Object.values(reviewData.movieReviews)
 
     const userArray = reviews.map(ele => ele.user.id)
 
-    const ratings = reviews.map(ele => ele.rating)
-
-
+    const ratee = parseInt(reviewData.rating)
 
     const opts = {
         height: 500,
@@ -42,26 +38,6 @@ const MovieDetails = () => {
         }
     }
 
-    const getRatings = async () => {
-        const data = await dispatch(getMovieReviews(id))
-
-        console.log(data)
-
-        if(data) {
-            // TODO: Fix ratings bug, one state behind when adding a review
-            // Before bug fix
-            let sum = 0
-            if(data) {
-
-                for(let i = 0; i < data.length; i++) {
-                    sum += data[i].rating
-                }
-
-                setRating(sum / ratings.length)
-                setStar(Math.floor(Math.random() * (100 - 1) + 1))
-            }
-        }
-    }
 
     const fetchVideo = async () => {
 
@@ -86,22 +62,14 @@ const MovieDetails = () => {
         // dispatch(getSingleMovie(id))
         await fetchVideo()
         // dispatch(getMovieReviews(id))
-        await getRatings()
-        // if(ratings.length) {
-        //     let sum = 0
-        //     for(let i = 0; i < ratings.length; i++) {
-        //         sum += ratings[i]
-        //     }
-
-        //     setRating(sum / ratings.length)
-        // }
+        await dispatch(getMovieReviews(id))
 
         return () => {
             dispatch(removeSingle())
             setTrailer('')
             closeModal()
         }
-    }, [dispatch, id, rate])
+    }, [dispatch, id, ratee])
 
     return movieDetails && (
         <div className="details-container">
@@ -112,12 +80,12 @@ const MovieDetails = () => {
                         <div className='movie-description'>
                             <h1>{movieDetails.title}</h1>
                             <div className='movie-overview'>
-                            {ratings.length ? (
+                            {ratee ? (
                                 <div style={{'display': 'flex', 'alignItems': 'flex-end'}}>
                                 <ReactStars size={30} count={5} isHalf={true} color='white'
                                     emptyIcon={<i className="far fa-star" />}
-                                    value={rate} key={starKey} />
-                                <div style={{'marginBottom': '7px'}}>({rate.toFixed(1)})</div>
+                                    value={ratee} />
+                                <div style={{'marginBottom': '7px'}}>({ratee})</div>
                                 </div>
                             ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie</div>}
 

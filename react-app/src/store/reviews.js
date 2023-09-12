@@ -23,7 +23,6 @@ const deleteReview = (id) => {
     }
 }
 
-
 // Movie reviews
 export const getMovieReviews = (id) => async dispatch => {
     const response = await fetch(`/api/reviews/${id}`)
@@ -31,9 +30,19 @@ export const getMovieReviews = (id) => async dispatch => {
     if (response.ok) {
         const data = await response.json()
 
-        dispatch(getReviews(data))
+        let sum = 0;
+        for(let i = 0; i < data.length; i++) {
+            sum += data[i].rating
+        }
 
-        return data
+        const rating = (sum / data.length).toFixed(1)
+
+        const newData = {
+            data: data,
+            rating: rating
+        }
+
+        dispatch(getReviews(newData))
     }
 }
 
@@ -94,7 +103,8 @@ export const deleteMovieReview = (id) => async dispatch => {
 }
 
 const initialState = {
-    movieReviews: {}
+    movieReviews: {},
+    rating: 0
 }
 
 
@@ -102,22 +112,25 @@ export default function reviewsReducer(state=initialState, action) {
     switch(action.type) {
 
         case GET_REVIEWS: {
-            const newState = {...state, movieReviews: {}}
-            action.payload.forEach(ele => newState.movieReviews[ele.id] = ele)
+            const newState = {...state, movieReviews: {}, rating: 0}
+            action.payload.data.forEach(ele => newState.movieReviews[ele.id] = ele)
+            newState.rating = action.payload.rating
             return newState
         }
 
         case CREATE_REVIEW: {
-            const newState = {...state, movieReviews: {...state.movieReviews}}
+            const newState = {...state, movieReviews: {...state.movieReviews}, rating: state.rating}
             newState.movieReviews[action.payload.id] = action.payload
             return newState
         }
 
         case DELETE_REVIEW: {
-            const newState = {...state, movieReviews: {...state.movieReviews}}
+            const newState = {...state, movieReviews: {...state.movieReviews}, rating: state.rating}
+            newState.rating = parseInt(newState.movieReviews[action.payload].rating) - parseInt(newState.rating)
             delete newState.movieReviews[action.payload]
             return newState
         }
+
 
         default:
             return state

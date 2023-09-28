@@ -45,7 +45,7 @@ function Navigation({ isLoaded }){
 							<>
 							{showBar ? (
 								<form onSubmit={submitHandler} >
-									<input style={{color: 'white', backgroundColor: 'black', border: 'solid white 1px', borderRadius: '10px', padding: '5px'}} className='search-input' value={searchInput} onChange={e => setSearch(e.target.value)} placeholder='Search by title'></input>
+									<input style={{color: 'white', backgroundColor: 'black', border: 'solid white 1px', borderRadius: '10px', padding: '10px', width: '300px'}} className='search-input' value={searchInput} onChange={e => setSearch(e.target.value)} placeholder='Search by title'></input>
 								</form>
 							):
 							<i onClick={() => setBar(true)} className="fa-solid fa-magnifying-glass"></i>

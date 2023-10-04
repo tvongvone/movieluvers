@@ -8,7 +8,7 @@ const RowMovies = ({title ,movies}) => {
 
     return movies.length && (
         <div className="movies-container">
-                <h1>{title}</h1>
+                <h1 style={{marginBottom: '20px'}}>{title}</h1>
                 <div style={{display: 'flex'}}>
                     {movies.map(movie => (
                         <div key={movie.id}>

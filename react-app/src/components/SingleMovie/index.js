@@ -41,7 +41,7 @@ const SingleMovie = ({movie}) => {
             <div ref={menu} className={movieCss}>
                 {user ? (
                     <ul style={{listStyle: 'none'}}>
-                        <li style={{'color': 'white'}}>Add to Watchlists</li>
+                        <li style={{'color': 'white'}}>Add to Watchlist</li>
                         {userWatchlist?.map(list => (
                             <li onClick={e => {
                                 e.preventDefault()
@@ -52,7 +52,7 @@ const SingleMovie = ({movie}) => {
                             </li>
                         ))}
                     </ul>
-                ):<div>You must be logged in to add movies to your watchlist</div>}
+                ):<div>You must be logged in to add movies to your watchlist!</div>}
             </div>
             <img className="poster" src={movie.posterPath} alt='Movie Poster'/>
 

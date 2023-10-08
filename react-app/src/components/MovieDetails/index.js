@@ -11,6 +11,7 @@ import OpenModalButton from '../OpenModalButton'
 import axios from 'axios'
 import { useModal } from '../../context/Modal'
 import ReactStars from 'react-rating-stars-component'
+// Use different react stars for this project
 
 const API_KEY = process.env.REACT_APP_API_KEY
 

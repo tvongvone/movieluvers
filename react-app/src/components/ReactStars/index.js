@@ -1,8 +1,13 @@
 import './reactstars.css'
 import {FaStar} from 'react-icons/fa'
+import { useState } from 'react'
 
 
-export default function ReactStars({rating}) {
+export default function ReactStars() {
+
+    const [rating, setRating] = useState('');
+
+
     return (
         <div className="star-component">
             {[...Array(5)].map(star => (

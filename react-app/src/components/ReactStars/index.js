@@ -6,6 +6,7 @@ import { useState } from 'react'
 export default function ReactStars() {
 
     const [rating, setRating] = useState('');
+    const [hover, setHover] = useState(null)
 
 
     return (
@@ -16,8 +17,13 @@ export default function ReactStars() {
                     type="radio"
                     name="rating"
                     value={rating}
+                    onClick={() => setRating(rating)}
                      />
-                    <FaStar size={50} />
+                    <FaStar
+                    className="star"
+                    size={50}
+                    onMouseEnter={() => setHover(rating)}
+                    onMouseLeave={() => setHover(null)} />
                 </label>
             ))}
         </div>

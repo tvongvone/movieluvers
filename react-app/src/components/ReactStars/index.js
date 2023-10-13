@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export default function ReactStars() {
 
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null)
 
 
@@ -22,10 +22,12 @@ export default function ReactStars() {
                     <FaStar
                     className="star"
                     size={50}
+                    color={rating <= (hover || rating) ? "#ffc107" : "e4e5e9"}
                     onMouseEnter={() => setHover(rating)}
                     onMouseLeave={() => setHover(null)} />
                 </label>
             ))}
+            <p>your rating is {rating}</p>
         </div>
     )
 }

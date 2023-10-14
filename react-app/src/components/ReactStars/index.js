@@ -11,7 +11,7 @@ export default function ReactStars() {
 
     return (
         <div className="star-component">
-            {[...Array(5)].map(star, index => {
+            {[...Array(5)].map((star, index) => {
                 const rating = index + 1
                 return (
                     <label>

@@ -11,8 +11,10 @@ export default function ReactStars() {
 
     return (
         <div className="star-component">
-            {[...Array(5)].map(star => (
-                <label>
+            {[...Array(5)].map(star, index => {
+                const rating = index + 1
+                return (
+                    <label>
                     <input
                     type="radio"
                     name="rating"
@@ -25,8 +27,10 @@ export default function ReactStars() {
                     color={rating <= (hover || rating) ? "#ffc107" : "e4e5e9"}
                     onMouseEnter={() => setHover(rating)}
                     onMouseLeave={() => setHover(null)} />
-                </label>
-            ))}
+                    </label>
+                )
+
+            })}
             <p>your rating is {rating}</p>
         </div>
     )

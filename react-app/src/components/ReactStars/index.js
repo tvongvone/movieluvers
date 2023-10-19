@@ -3,9 +3,9 @@ import {FaStar} from 'react-icons/fa'
 import { useState } from 'react'
 
 
-export default function ReactStars() {
+export default function ReactStars({stars}) {
 
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(stars);
     const [hover, setHover] = useState(null)
 
 

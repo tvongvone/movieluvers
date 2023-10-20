@@ -113,7 +113,7 @@ const MovieDetails = () => {
                     {reviews?.map(review =>(
                         <div key={review.id}>
                             <ReviewCard review={review}/>
-                            {console.log(review)}
+                            {console.log(review.rating)}
                         </div>
                     ))}
                     {user && !userArray.includes(user?.id) && (

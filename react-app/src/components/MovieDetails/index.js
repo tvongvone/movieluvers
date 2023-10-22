@@ -21,6 +21,7 @@ const MovieDetails = () => {
     const dispatch = useDispatch();
     const {id} = useParams()
     const [trailer, setTrailer] = useState('')
+    const [currentRating, setRating] = useState(null)
     const movieDetails = useSelector(state => state.movies.singleMovie)
     const reviewData = useSelector(state => state.reviews)
     const user = useSelector(state => state.session.user)

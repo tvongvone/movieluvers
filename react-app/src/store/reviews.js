@@ -24,6 +24,7 @@ const deleteReview = (id) => {
 }
 
 // Movie reviews
+// Average rating of movie
 export const getMovieReviews = (id) => async dispatch => {
     const response = await fetch(`/api/reviews/${id}`)
 

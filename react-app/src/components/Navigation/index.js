@@ -37,7 +37,7 @@ function Navigation({ isLoaded }){
 			<ul className='nav-bar-content'>
 				<li className='nav-bar-left'>
 					<NavLink style={{textDecoration: 'none'}} exact to="/"><span className="title">TONYFLIX</span></NavLink>
-					<NavLink style={{textDecoration: 'none'}} to='/mywatchlists'><span className='watchlist-span'>Watchlist</span></NavLink>
+					<NavLink style={{textDecoration: 'none'}} to='/mywatchlists'><span className='watchlist-span'>My List</span></NavLink>
 				</li>
 				{isLoaded && (
 					<li ref={menu} style={{display: 'flex', alignItems: 'center'}}>

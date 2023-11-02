@@ -46,7 +46,7 @@ const CreateList = () => {
 
     return (
         <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '400px', height: '200px'}}>
-            <h2>Watchlist name</h2>
+            <h2>Watchlist</h2>
             {hasSubmitted && validationErrors.length > 0 && (
                     <div className='errors-info'>
                         <ul>
@@ -58,7 +58,7 @@ const CreateList = () => {
                 )}
             <form className="form-review" onSubmit={submitHandler}>
                 <input style={{padding: '10px', margin: '10px', width: '80%' }} id='name' name='name' type='text' value={name} onChange={e => setName(e.target.value)} />
-                <button className="create-review-button" type='submit'>Create list</button>
+                <button className="create-review-button" type='submit'>Create</button>
             </form>
         </div>
     )

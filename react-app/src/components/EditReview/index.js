@@ -36,7 +36,7 @@ const EditReview = ({review}) => {
 
     useEffect(() => {
         const errors = []
-        if (!reviewText) errors.push('Please enter a name for this Watchlist')
+        if (!reviewText) errors.push('Please provide a name for this Watchlist')
         setErrors(errors)
     }, [reviewText])
 

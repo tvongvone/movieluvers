@@ -90,7 +90,7 @@ const MovieDetails = () => {
                                     value={ratee} />
                                 <div style={{'marginBottom': '7px'}}>({ratee})</div>
                                 </div>
-                            ): <div style={{'paddingBottom': '10px'}}>There are currently no ratings for this movie.</div>}
+                            ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie.</div>}
 
                             {trailer && (
                                 <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
@@ -114,7 +114,6 @@ const MovieDetails = () => {
                     {reviews?.map(review =>(
                         <div key={review.id}>
                             <ReviewCard review={review}/>
-                            {console.log(review.rating)}
                         </div>
                     ))}
                     {user && !userArray.includes(user?.id) && (

@@ -95,7 +95,7 @@ const MovieDetails = () => {
                             {trailer && (
                                 <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>
                                     <i style={{marginLeft: '15px'}} className="fa-solid fa-play"></i>
-                                    <span style={{marginLeft: '15px',fontSize: '18px'}}>Play trailer</span>
+                                    <span style={{marginLeft: '15px',fontSize: '18px'}}>Play Trailer</span>
                                 </div>}/>
                             )}
                                 <h2 style={{marginBottom: '10px'}}>Overview</h2>

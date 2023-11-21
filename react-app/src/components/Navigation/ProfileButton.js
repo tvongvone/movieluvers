@@ -53,7 +53,7 @@ function ProfileButton({ user }) {
         <ul onMouseOver={openMenu} onMouseOut={closeMenu} className={ulClassName} ref={ulRef}>
               <li >{user.username}</li>
               <li>
-                <button className='logout-btn' onClick={handleLogout}>Log Out</button>
+                <button className='logout-btn' onClick={handleLogout}>Log out</button>
               </li>
         </ul>
         </div>

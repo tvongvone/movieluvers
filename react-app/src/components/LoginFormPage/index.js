@@ -39,7 +39,7 @@ function LoginFormPage() {
       <div className="login-page-container">
         <div className='login-title'>
         <i className="fa-solid fa-film" style={{color: 'red'}}></i>
-          <div style={{color: "white"}}>Login</div>
+          <div style={{color: "white"}}>Log in</div>
         </div>
         <div className="login-form-container">
           <form className='login-form' onSubmit={handleSubmit}>

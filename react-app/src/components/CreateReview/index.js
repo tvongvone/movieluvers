@@ -52,7 +52,7 @@ const CreateReview = ({id}) => {
                                 filledIcon={<i className="fa fa-star" />} value={stars} onChange={e => setStars(e)}/>
                                 </div>
                                 {hasSubmitted && validationErrors.length > 0 && (
-                                    <label style={{color: 'red', top: '5px'}}>Please provide a brief review(0, 1000) characters.</label>
+                                    <label style={{color: 'red', top: '5px'}}>Please provide a brief review(0, 1000 characters).</label>
                                 )}
                                 <textarea style={{color: 'white',backgroundColor:'#111', height: '100px', width: '92%'}} value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
                             </div>

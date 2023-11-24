@@ -19,7 +19,7 @@ const ReviewCard = ({review}) => {
             <div className='review-header'>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                 <h2 className='profile-name'>{review.user.username[0].toUpperCase()}</h2>
-                <h3>A review by {review.user.username} <span style={{marginLeft: '20px'}}>{review.rating}/5</span></h3>
+                <h3>Review by {review.user.username} <span style={{marginLeft: '20px'}}>{review.rating}/5</span></h3>
                 {/* <span style={{marginLeft: '10px', fontSize: '14px'}}>{review.rating}/5</span> */}
                 </div>
                 {user?.id === review.userId && (

@@ -31,7 +31,7 @@ export default function ReactStars({stars}) {
                 )
 
             })}
-            <p>your rating is {rating}</p>
+            <p>The rating you provided is {rating}</p>
         </div>
     )
 }

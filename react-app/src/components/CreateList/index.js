@@ -58,7 +58,7 @@ const CreateList = () => {
                 )}
             <form className="form-review" onSubmit={submitHandler}>
                 <input style={{padding: '10px', margin: '10px', width: '80%' }} id='name' name='name' type='text' value={name} onChange={e => setName(e.target.value)} />
-                <button className="create-review-button" type='submit'>Post review</button>
+                <button className="create-review-button" type='submit'>Create</button>
             </form>
         </div>
     )

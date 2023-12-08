@@ -124,7 +124,7 @@ const MovieDetails = () => {
 
                     )}
                     {!user && (
-                        <h3>Log in to leave a review</h3>
+                        <h3>Must be logged in to leave a review</h3>
                     )}
                 </div>
             </div>

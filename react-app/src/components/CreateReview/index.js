@@ -59,7 +59,7 @@ const CreateReview = ({id}) => {
 
                     </div>
 
-                    <button className="create-review-button" type='submit'>Post</button>
+                    <button className="create-review-button" type='submit'>Submit</button>
                 </form>
         </div>
     )

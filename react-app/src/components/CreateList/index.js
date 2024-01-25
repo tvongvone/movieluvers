@@ -46,7 +46,7 @@ const CreateList = () => {
 
     return (
         <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width: '400px', height: '200px'}}>
-            <h2>Watchlist</h2>
+            <h2>Watchlists</h2>
             {hasSubmitted && validationErrors.length > 0 && (
                     <div className='errors-info'>
                         <ul>

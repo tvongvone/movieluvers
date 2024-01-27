@@ -22,6 +22,8 @@ const HomePage = () => {
     const oldMovies = Object.values(moviesData.bestMovies)
     const upcoming = Object.values(moviesData.upcomingMovies)
 
+    // Fetching the seed data from the backend
+
     useEffect(() => {
         dispatch(getAllMovies())
     }, [dispatch])
@@ -62,6 +64,8 @@ const HomePage = () => {
         <RowMovies title={'Upcoming movies'} movies={upcoming} />
 
         <RowMovies title={'Top Rated movies'} movies={oldMovies} />
+
+
 
 
 

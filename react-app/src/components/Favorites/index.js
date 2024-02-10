@@ -4,7 +4,7 @@
 
 const Favorite = () => {
     return (
-        <div>Favorite component</div>
+        <div>Active icon</div>
     )
 }
 

@@ -91,7 +91,7 @@ const MovieDetails = () => {
                                     value={ratee} />
                                 <div style={{'marginBottom': '7px'}}>({ratee})</div>
                                 </div>
-                            ): <div style={{'paddingBottom': '10px'}}></div>}
+                            ): <div style={{'paddingBottom': '10px'}}>Currently no ratings for this movie.</div>}
 
                             {trailer && (
                                 <OpenModalButton styleOption={'play-button'} modalComponent={<YouTube onEnd={() => closeModal()} opts={opts} videoId={trailer?.key}/>} buttonText={<div>

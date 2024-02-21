@@ -49,7 +49,7 @@ const EditReview = ({review}) => {
                         <label style={{color: 'red'}}>Please provide a brief review(0, 255) characters.</label>
                     )}
                     <textarea style={{marginLeft: '23px', width: '400px', height: '100px'}} value={reviewText} onChange={e => setReview(e.target.value)} placeholder='Add a review' />
-                    <button className="create-review-button" type='submit'>Post Review</button>
+                    <button className="create-review-button" type='submit'>Submit</button>
                 </form>
         </div>
     )

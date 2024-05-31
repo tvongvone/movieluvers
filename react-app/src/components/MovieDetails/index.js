@@ -100,8 +100,6 @@ const MovieDetails = () => {
                             )}
                                 <h2 style={{marginBottom: '10px'}}>Overview</h2>
                                 <p>{movieDetails.overview}</p>
-                                <div>Add to watchlist component</div>
-
                             </div>
                         </div>
 

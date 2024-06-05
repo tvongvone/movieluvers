@@ -52,7 +52,7 @@ const SingleMovie = ({movie}) => {
                             </li>
                         ))}
                     </ul>
-                ):<div>You must be logged in to add to a Watchlist</div>}
+                ):<div>You must be logged in to add to Watchlist</div>}
             </div>
             <img className="poster" src={movie.posterPath} alt='Movie Poster'/>
 

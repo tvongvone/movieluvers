@@ -69,7 +69,7 @@ function LoginFormPage() {
         <div className='login-buttons-container'>
             <button id='login-submit-button' type="submit">Log In</button>
           <div>OR</div>
-          <button id='demo-user-submit-button' onClick={demoUser}>Demo</button>
+          <button id='demo-user-submit-button' onClick={demoUser}>Demo User</button>
         </div>
         <span>Don't have an account? <NavLink style={{color: 'white'}} to='/signup'>Sign Up</NavLink></span>
           </form>

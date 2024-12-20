@@ -37,7 +37,7 @@ const CreateList = () => {
 
     useEffect(() => {
         const errors = []
-        if (!name.length) errors.push('Please provide a name for this Watchlist')
+        if (!name.length) errors.push('Please provide name for this Watchlist')
         setErrors(errors)
     }, [name])
 

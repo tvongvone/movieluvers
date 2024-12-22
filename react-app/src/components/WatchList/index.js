@@ -29,7 +29,7 @@ const WatchList = () => {
             <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
         </div>
     ): <div className="watchlist-container">
-         <h1>You currently have no list.</h1>
+         <h1>You currently have no list</h1>
          <OpenModalButton modalComponent={<CreateList />} styleOption='addIcon' buttonText={<i style={{fontSize: '20px'}} className="fa-solid fa-plus"></i>}  />
     </div>
 

@@ -67,7 +67,7 @@ function LoginFormPage() {
                 required
               />
         <div className='login-buttons-container'>
-            <button id='login-submit-button' type="submit">Log In</button>
+            <button id='login-submit-button' type="submit">Login</button>
           <div>OR</div>
           <button id='demo-user-submit-button' onClick={demoUser}>Demo User</button>
         </div>

@@ -24,7 +24,7 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must match the Password field",
+				"Please make sure Confirm Password matches Password",
 			]);
 		}
 	};

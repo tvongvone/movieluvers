@@ -85,7 +85,7 @@ function SignupFormPage() {
           type="submit"
           id='login-submit-button'
         >
-          Sign up
+          Sign Up
         </button>
         </div>
       </form>
